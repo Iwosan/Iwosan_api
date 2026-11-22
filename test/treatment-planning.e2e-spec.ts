@@ -30,7 +30,7 @@ describe('Treatment Planning Authentication & Plan Creation (e2e)', () => {
         if (token === validToken) {
           return {
             userId: testUserId,
-            email: 'physician@healthystellar.org',
+            email: 'physician@iwosan.org',
             role: UserRole.PHYSICIAN,
             mfaEnabled: true,
             sessionId: testSessionId,
@@ -46,7 +46,7 @@ describe('Treatment Planning Authentication & Plan Creation (e2e)', () => {
         if (token === validToken) {
           return {
             userId: testUserId,
-            email: 'physician@healthystellar.org',
+            email: 'physician@iwosan.org',
             role: UserRole.PHYSICIAN,
             mfaEnabled: true,
             sessionId: testSessionId,

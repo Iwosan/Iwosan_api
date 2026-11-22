@@ -32,7 +32,7 @@ following environment variables / secrets when deploying Alertmanager:
 
 | Variable | Description |
 | --- | --- |
-| `SLA_ALERT_EMAIL` | Destination email (default `oncall@healthystellar.io`) |
+| `SLA_ALERT_EMAIL` | Destination email (default `oncall@iwosan.io`) |
 | `ALERT_FROM_EMAIL` | From address |
 | `SMTP_SMARTHOST`, `SMTP_USERNAME`, `SMTP_PASSWORD` | SMTP relay credentials |
 | `SLACK_WEBHOOK_URL` | Slack incoming webhook URL |

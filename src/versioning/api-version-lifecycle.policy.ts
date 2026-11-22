@@ -17,7 +17,7 @@ export const API_VERSION_LIFECYCLE_POLICIES: ApiVersionLifecyclePolicy[] = [
     releaseDate: '2024-01-01',
     baseUrl: '/v1',
     changelog:
-      'https://github.com/Healthy-Stellar/Healthy-Stellar-backend/blob/main/docs/api-versioning.md#v1',
+      'https://github.com/Iwosan/Iwosan_api/blob/main/docs/api-versioning.md#v1',
   },
   {
     version: '2',
@@ -27,6 +27,6 @@ export const API_VERSION_LIFECYCLE_POLICIES: ApiVersionLifecyclePolicy[] = [
     sunsetDate: 'Wed, 01 Jan 2027 00:00:00 GMT',
     replacementVersion: '3',
     changelog:
-      'https://github.com/Healthy-Stellar/Healthy-Stellar-backend/blob/main/docs/api-versioning.md#v2',
+      'https://github.com/Iwosan/Iwosan_api/blob/main/docs/api-versioning.md#v2',
   },
 ];

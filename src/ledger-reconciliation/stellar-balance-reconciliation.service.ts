@@ -36,7 +36,7 @@ export class StellarBalanceReconciliationService {
     this.thresholdXlm = parseFloat(
       this.config.get<string>('RECONCILIATION_DISCREPANCY_THRESHOLD_XLM', '1.0'),
     );
-    this.adminEmail = this.config.get<string>('ADMIN_EMAIL', 'admin@healthystellar.io');
+    this.adminEmail = this.config.get<string>('ADMIN_EMAIL', 'admin@iwosan.io');
   }
 
   private get horizon(): StellarSdk.Horizon.Server {

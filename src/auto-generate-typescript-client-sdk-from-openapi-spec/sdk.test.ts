@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MedChainClient } from '../src/client';
+import { IwosanClient } from '../src/client';
 import { AuthApi, RecordsApi, AccessApi, AuditApi } from '../src/generated/api';
 import type {
   LoginResponse,
@@ -32,10 +32,10 @@ beforeEach(() => {
   (axios.create as jest.Mock).mockReturnValue(mockAxiosInstance);
 });
 
-// ─── MedChainClient ──────────────────────────────────────────────────────────
-describe('MedChainClient', () => {
+// ─── IwosanClient ──────────────────────────────────────────────────────────
+describe('IwosanClient', () => {
   it('instantiates all API classes', () => {
-    const client = new MedChainClient({ basePath: 'http://localhost:3000/v1' });
+    const client = new IwosanClient({ basePath: 'http://localhost:3000/v1' });
     expect(client.auth).toBeInstanceOf(AuthApi);
     expect(client.records).toBeInstanceOf(RecordsApi);
     expect(client.access).toBeInstanceOf(AccessApi);
@@ -43,7 +43,7 @@ describe('MedChainClient', () => {
   });
 
   it('setToken updates configuration on all API instances', () => {
-    const client = new MedChainClient();
+    const client = new IwosanClient();
     client.setToken('test-token-abc');
     // @ts-expect-error accessing protected for test
     expect(client.auth.configuration.accessToken).toBe('test-token-abc');

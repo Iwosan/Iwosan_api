@@ -35,7 +35,7 @@ with `openapi-to-postmanv2`:
 ```bash
 npx --yes openapi-to-postmanv2 \
 	-s docs/openapi.json \
-	-o docs/postman/MedChain.postman_collection.json \
+	-o docs/postman/Iwosan.postman_collection.json \
 	-p
 ```
 

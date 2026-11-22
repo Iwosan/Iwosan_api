@@ -19,7 +19,7 @@ This runbook covers investigating and remediating both.
   (`[ALERT] Stellar balance discrepancy: … XLM`) to `ADMIN_EMAIL`.
 - `GET /admin/reconciliation/reports` returns a report with
   `discrepancyThresholdExceeded: true`.
-- The anchor reconciliation metric `medchain_reconciliation_discrepancies_total`
+- The anchor reconciliation metric `iwosan_reconciliation_discrepancies_total`
   increases (`type="failed"`, `type="missing"`, or `type="detected_only"`).
 - The ops alert fires when more than `MISSING_ALERT_THRESHOLD` (5) missing
   transactions are detected in a single anchor run.
@@ -42,7 +42,7 @@ This runbook covers investigating and remediating both.
 - `admin` role JWT for the `/admin/reconciliation/*` endpoints.
 - Read access to application logs (the reconciliation services log per-run
   summaries) and to the Prometheus metric
-  `medchain_reconciliation_discrepancies_total`.
+  `iwosan_reconciliation_discrepancies_total`.
 - Ability to query `ledger_reconciliation_reports` and the internal ledger data
   for investigation.
 - Optional: `STELLAR_NETWORK` set correctly (`mainnet` selects
@@ -122,7 +122,7 @@ automatically.
   `failed: 0` (or the remaining counts are understood and tracked).
 - The newest balance report shows `unmatched: 0`, or a `discrepancyTotal` below
   `RECONCILIATION_DISCREPANCY_THRESHOLD_XLM`.
-- `medchain_reconciliation_discrepancies_total` stops increasing.
+- `iwosan_reconciliation_discrepancies_total` stops increasing.
 - No new discrepancy alert email is sent on the next nightly run.
 
 > Threshold semantics: the alert fires when the **sum of absolute discrepancies
@@ -150,7 +150,7 @@ automatically.
 | Variable | Default | Meaning |
 |---|---|---|
 | `RECONCILIATION_DISCREPANCY_THRESHOLD_XLM` | `1.0` | Total absolute XLM discrepancy that triggers the alert. |
-| `ADMIN_EMAIL` | `admin@healthystellar.io` | Recipient of discrepancy alerts. |
+| `ADMIN_EMAIL` | `admin@iwosan.io` | Recipient of discrepancy alerts. |
 | `STELLAR_NETWORK` | — | `mainnet` selects the mainnet Horizon; otherwise testnet. |
 | `OPS_SLACK_WEBHOOK_URL` | — | Optional Slack webhook for anchor missing-transaction alerts. |
 
@@ -164,4 +164,4 @@ automatically.
 - `src/ledger-reconciliation/reconciliation.job.ts` (cron schedules:
   every 2 hours for anchors, nightly 02:00 UTC for balances).
 - `src/ledger-reconciliation/reconciliation.controller.ts`,
-  `reconciliation.metrics.ts` (`medchain_reconciliation_discrepancies_total`).
+  `reconciliation.metrics.ts` (`iwosan_reconciliation_discrepancies_total`).

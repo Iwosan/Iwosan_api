@@ -19,7 +19,7 @@ const IDEMPOTENCY_TTL_SECONDS = 86400; // 24 hours
 })
 export class StellarTransactionProcessor extends WorkerHost implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(StellarTransactionProcessor.name);
-  private readonly tracer = trace.getTracer('healthy-stellar-backend');
+  private readonly tracer = trace.getTracer('iwosan-api');
   private redis: Redis;
 
   constructor(

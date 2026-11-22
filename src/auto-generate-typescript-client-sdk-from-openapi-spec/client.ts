@@ -1,13 +1,13 @@
 /**
- * MedChainClient — Unified entry point for the @medchain/sdk.
+ * IwosanClient — Unified entry point for the @iwosan/sdk.
  *
  * Wraps all generated API classes into a single configurable client.
  *
  * @example
  * ```ts
- * import { MedChainClient } from '@medchain/sdk';
+ * import { IwosanClient } from '@iwosan/sdk';
  *
- * const client = new MedChainClient({ basePath: 'https://api.medchain.io/v1' });
+ * const client = new IwosanClient({ basePath: 'https://api.iwosan.io/v1' });
  * const { data } = await client.auth.login({ username: 'alice', password: 's3cr3t' });
  * client.setToken(data.token!);
  * ```
@@ -15,14 +15,14 @@
 import { Configuration } from './generated/base';
 import { AuthApi, RecordsApi, AccessApi, AuditApi } from './generated/api';
 
-export interface MedChainClientOptions {
-  /** API base URL. Defaults to https://api.medchain.io/v1 */
+export interface IwosanClientOptions {
+  /** API base URL. Defaults to https://api.iwosan.io/v1 */
   basePath?: string;
   /** Initial bearer token (can be updated via setToken) */
   token?: string;
 }
 
-export class MedChainClient {
+export class IwosanClient {
   private _config: Configuration;
   private _basePath: string;
 
@@ -31,8 +31,8 @@ export class MedChainClient {
   public readonly access: AccessApi;
   public readonly audit: AuditApi;
 
-  constructor(options: MedChainClientOptions = {}) {
-    this._basePath = options.basePath ?? 'https://api.medchain.io/v1';
+  constructor(options: IwosanClientOptions = {}) {
+    this._basePath = options.basePath ?? 'https://api.iwosan.io/v1';
     this._config = {
       basePath: this._basePath,
       accessToken: options.token,

@@ -24,8 +24,8 @@ receivers:
   - name: 'sla-critical-receiver'
     # Credentials are injected from the environment / secret store at deploy time.
     email_configs:
-      - to: '${SLA_ALERT_EMAIL:-oncall@healthystellar.io}'
-        from: '${ALERT_FROM_EMAIL:-alerts@healthystellar.io}'
+      - to: '${SLA_ALERT_EMAIL:-oncall@iwosan.io}'
+        from: '${ALERT_FROM_EMAIL:-alerts@iwosan.io}'
         smarthost: '${SMTP_SMARTHOST:-smtp:587}'
         auth_username: '${SMTP_USERNAME}'
         auth_password: '${SMTP_PASSWORD}'

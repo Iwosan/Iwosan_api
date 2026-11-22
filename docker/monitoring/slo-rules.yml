@@ -1,4 +1,4 @@
-# SLO Recording Rules — Healthy Stellar Backend
+# SLO Recording Rules — Iwosan Backend
 #
 # Three Service Level Objectives:
 #   SLO-1  API Availability      — 99.9 % of requests succeed (non-5xx)   over 30-day window

@@ -3,7 +3,7 @@ import { trace, context, Span, SpanStatusCode, SpanKind } from '@opentelemetry/a
 
 @Injectable()
 export class TracingService {
-  private readonly tracer = trace.getTracer('healthy-stellar-backend');
+  private readonly tracer = trace.getTracer('iwosan-api');
 
   /**
    * Create and execute a custom span

@@ -1,5 +1,5 @@
 /**
- * MedChain SDK - Full Example
+ * Iwosan SDK - Full Example
  *
  * Demonstrates the complete upload → grant → fetch flow:
  *   1. Authenticate as an uploader
@@ -15,9 +15,9 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { MedChainClient, RecordMetadata, Permission } from '../src/index';
+import { IwosanClient, RecordMetadata, Permission } from '../src/index';
 
-const API_BASE = process.env.MEDCHAIN_API_URL ?? 'http://localhost:3000/v1';
+const API_BASE = process.env.IWOSAN_API_URL ?? 'http://localhost:3000/v1';
 
 // ─── Credentials (load from env in production) ───────────────────────────────
 const UPLOADER = { username: 'nurse@hospital.org', password: 'nurse_pass' };
@@ -27,7 +27,7 @@ const PATIENT_ID = 'patient-uuid-1234';
 async function main() {
   // ── Step 1: Authenticate as the uploader ──────────────────────────────────
   console.log('\n[1] Logging in as uploader…');
-  const uploaderClient = new MedChainClient({ basePath: API_BASE });
+  const uploaderClient = new IwosanClient({ basePath: API_BASE });
   const { data: authData } = await uploaderClient.auth.login(UPLOADER);
   uploaderClient.setToken(authData.token);
   console.log(`    ✓ Token acquired (expires in ${authData.expiresIn}s)`);
@@ -70,7 +70,7 @@ async function main() {
 
   // ── Step 4: Authenticate as the doctor ────────────────────────────────────
   console.log('\n[4] Logging in as doctor…');
-  const doctorClient = new MedChainClient({ basePath: API_BASE });
+  const doctorClient = new IwosanClient({ basePath: API_BASE });
   const { data: doctorAuth } = await doctorClient.auth.login(DOCTOR);
   doctorClient.setToken(doctorAuth.token);
   console.log('    ✓ Doctor token acquired');

@@ -273,7 +273,7 @@ export class BackupService {
   private async backupDatabase(outputPath: string): Promise<void> {
     const dbHost = validateDbHost(process.env.DB_HOST || 'localhost');
     const dbPort = validateDbPort(process.env.DB_PORT || '5432');
-    const dbName = validateDbIdentifier(process.env.DB_NAME || 'healthy_stellar', 'DB_NAME');
+    const dbName = validateDbIdentifier(process.env.DB_NAME || 'iwosan', 'DB_NAME');
     const dbUser = validateDbIdentifier(process.env.DB_USERNAME || 'medical_user', 'DB_USERNAME');
 
     await spawnAsync(
@@ -300,7 +300,7 @@ export class BackupService {
   private async backupDatabaseIncremental(outputPath: string, sinceDate: Date): Promise<void> {
     const dbHost = validateDbHost(process.env.DB_HOST || 'localhost');
     const dbPort = validateDbPort(process.env.DB_PORT || '5432');
-    const dbName = validateDbIdentifier(process.env.DB_NAME || 'healthy_stellar', 'DB_NAME');
+    const dbName = validateDbIdentifier(process.env.DB_NAME || 'iwosan', 'DB_NAME');
     const dbUser = validateDbIdentifier(process.env.DB_USERNAME || 'medical_user', 'DB_USERNAME');
 
     // Timestamp-filtered logical export.

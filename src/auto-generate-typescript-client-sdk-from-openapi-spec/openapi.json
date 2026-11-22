@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "MedChain API",
+    "title": "Iwosan API",
     "description": "Blockchain-based medical records management API",
     "version": "1.0.0",
     "contact": {
-      "name": "MedChain Team"
+      "name": "Iwosan Team"
     }
   },
   "servers": [
     {
-      "url": "https://api.medchain.io/v1",
+      "url": "https://api.iwosan.io/v1",
       "description": "Production"
     },
     {

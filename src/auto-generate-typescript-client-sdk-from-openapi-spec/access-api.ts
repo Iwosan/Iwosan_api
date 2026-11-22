@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * MedChain API - AccessApi
+ * Iwosan API - AccessApi
  * NOTE: Auto-generated. Do not edit manually.
  */
 import { AxiosPromise, AxiosRequestConfig } from 'axios';

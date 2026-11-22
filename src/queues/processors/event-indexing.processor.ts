@@ -67,7 +67,7 @@ export interface EventIndexingResult {
 })
 export class EventIndexingProcessor extends WorkerHost {
   private readonly logger = new Logger(EventIndexingProcessor.name);
-  private readonly tracer = trace.getTracer('healthy-stellar-backend');
+  private readonly tracer = trace.getTracer('iwosan-api');
 
   constructor(
     private readonly configService: ConfigService,

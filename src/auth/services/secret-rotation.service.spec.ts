@@ -138,7 +138,7 @@ describe('SecretRotationService', () => {
       port: 5432,
       username: 'app',
       password: 'primary-password-secure',
-      database: 'healthystellar',
+      database: 'iwosan',
     };
 
     it('sets active DB credentials', () => {

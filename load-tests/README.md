@@ -1,6 +1,6 @@
 # Load Tests
 
-k6-based load test suite for the Healthy-Stellar backend. Covers REST endpoints, GraphQL subscriptions, and Stellar blockchain write operations.
+k6-based load test suite for the Iwosan backend. Covers REST endpoints, GraphQL subscriptions, and Stellar blockchain write operations.
 
 ## Table of Contents
 

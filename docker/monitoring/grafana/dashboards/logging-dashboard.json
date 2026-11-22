@@ -80,7 +80,7 @@
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "sum(rate({app=\"healthy-stellar-backend\"} |= \"error\" [5m])) by (level)",
+          "expr": "sum(rate({app=\"iwosan-api\"} |= \"error\" [5m])) by (level)",
           "refId": "A"
         }
       ],
@@ -149,7 +149,7 @@
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "sum(rate({app=\"healthy-stellar-backend\"} [5m])) by (level)",
+          "expr": "sum(rate({app=\"iwosan-api\"} [5m])) by (level)",
           "refId": "A"
         }
       ],
@@ -202,7 +202,7 @@
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "{app=\"healthy-stellar-backend\"} | json | duration > 1000 | line_format \"{{.method}} {{.url}} - {{.duration}}ms\"",
+          "expr": "{app=\"iwosan-api\"} | json | duration > 1000 | line_format \"{{.method}} {{.url}} - {{.duration}}ms\"",
           "refId": "A"
         }
       ],
@@ -280,7 +280,7 @@
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "sum(count_over_time({app=\"healthy-stellar-backend\"} | json | statusCode >= 500 [5m])) by (statusCode)",
+          "expr": "sum(count_over_time({app=\"iwosan-api\"} | json | statusCode >= 500 [5m])) by (statusCode)",
           "refId": "A"
         }
       ],
@@ -349,7 +349,7 @@
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "sum(count_over_time({app=\"healthy-stellar-backend\"} | json | statusCode >= 400 and statusCode < 500 [5m])) by (statusCode)",
+          "expr": "sum(count_over_time({app=\"iwosan-api\"} | json | statusCode >= 400 and statusCode < 500 [5m])) by (statusCode)",
           "refId": "A"
         }
       ],
@@ -393,7 +393,7 @@
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "{app=\"healthy-stellar-backend\", logType=\"audit\"}",
+          "expr": "{app=\"iwosan-api\", logType=\"audit\"}",
           "refId": "A"
         }
       ],
@@ -404,7 +404,7 @@
   "refresh": "10s",
   "schemaVersion": 27,
   "style": "dark",
-  "tags": ["logging", "monitoring", "healthy-stellar"],
+  "tags": ["logging", "monitoring", "iwosan"],
   "templating": {
     "list": []
   },
@@ -414,7 +414,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Healthy Stellar - Logging Dashboard",
-  "uid": "healthy-stellar-logging",
+  "title": "Iwosan - Logging Dashboard",
+  "uid": "iwosan-logging",
   "version": 1
 }

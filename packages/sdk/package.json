@@ -1,8 +1,8 @@
 {
-  "name": "@medchain/sdk",
+  "name": "@iwosan/sdk",
   "version": "1.0.0",
-  "description": "Auto-generated TypeScript SDK for MedChain Healthcare API",
-  "author": "MedChain Team",
+  "description": "Auto-generated TypeScript SDK for Iwosan Healthcare API",
+  "author": "Iwosan Team",
   "license": "ISC",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -51,11 +51,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Healthy-Stellar/Healthy-Stellar-backend.git",
+    "url": "https://github.com/Iwosan/Iwosan_api.git",
     "directory": "packages/sdk"
   },
   "keywords": [
-    "medchain",
+    "iwosan",
     "healthcare",
     "api",
     "client",
@@ -65,7 +65,7 @@
     "blockchain"
   ],
   "bugs": {
-    "url": "https://github.com/Healthy-Stellar/Healthy-Stellar-backend/issues"
+    "url": "https://github.com/Iwosan/Iwosan_api/issues"
   },
-  "homepage": "https://github.com/Healthy-Stellar/Healthy-Stellar-backend/tree/main/packages/sdk#readme"
+  "homepage": "https://github.com/Iwosan/Iwosan_api/tree/main/packages/sdk#readme"
 }

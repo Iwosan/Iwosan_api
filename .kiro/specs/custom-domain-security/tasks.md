@@ -69,10 +69,10 @@
 
   - [ ] 3.3 Create DomainVerificationService for DNS TXT record verification
     - Create `src/tenant/services/dns-verification.service.ts`
-    - Implement method `generateChallenge(tenantId: string, domain: string): string` returning format `_healthystellar.{domain} TXT "tenant-id={tenantId}"`
+    - Implement method `generateChallenge(tenantId: string, domain: string): string` returning format `_iwosan.{domain} TXT "tenant-id={tenantId}"`
     - Implement method `initiateVerification(tenantId: string, domain: string)` that updates verified_domain_status to "pending_verification"
     - Implement method `verifyDNSRecord(domain: string, tenantId: string): Promise<boolean>` that:
-      - Queries DNS for TXT record at `_healthystellar.{domain}`
+      - Queries DNS for TXT record at `_iwosan.{domain}`
       - Validates record contains `tenant-id={tenantId}`
       - On success: updates database to verified_domain_status="verified", emits event
       - On failure: sets verified_domain_status="failed", returns false

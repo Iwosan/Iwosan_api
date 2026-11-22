@@ -444,7 +444,7 @@ export class GdprProcessor extends WorkerHost implements OnModuleInit {
           code: { text: moduleName },
           extension: [
             {
-              url: 'https://healthystellar.com/fhir/StructureDefinition/dsar-source-data',
+              url: 'https://iwosan.com/fhir/StructureDefinition/dsar-source-data',
               valueString: JSON.stringify(source),
             },
           ],
@@ -603,7 +603,7 @@ export class GdprProcessor extends WorkerHost implements OnModuleInit {
       try {
         if ((this.notificationsService as any).sendEmail) {
           await (this.notificationsService as any).sendEmail(
-            'dpo@healthystellar.com',
+            'dpo@iwosan.com',
             'GDPR Erasure Request Processed',
             'ErasureCompleted',
             { userId: data.userId, requestId: data.requestId },

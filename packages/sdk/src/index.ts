@@ -1,10 +1,10 @@
 /**
- * MedChain API
+ * Iwosan API
  * Blockchain-based medical records management API
  * Auto-generated from OpenAPI specification
  *
  * Version: 1.0.0
- * Contact: support@medchain.io
+ * Contact: support@iwosan.io
  */
 
 // Export all API classes

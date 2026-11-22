@@ -45,7 +45,7 @@ class DatabaseBenchmark {
       port: parseInt(process.env.DB_PORT || '5432'),
       username: process.env.DB_USERNAME || 'postgres',
       password: process.env.DB_PASSWORD || 'postgres',
-      database: process.env.DB_NAME || 'healthy_stellar',
+      database: process.env.DB_NAME || 'iwosan',
       synchronize: false,
       logging: false,
     });

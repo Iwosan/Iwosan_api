@@ -1,5 +1,5 @@
 /**
- * Configuration for MedChain SDK
+ * Configuration for Iwosan SDK
  */
 
 export interface ConfigurationParameters {
@@ -10,7 +10,7 @@ export interface ConfigurationParameters {
 }
 
 /**
- * Configuration class for MedChain SDK
+ * Configuration class for Iwosan SDK
  * Manages API credentials and base configuration
  */
 export class Configuration {
@@ -27,7 +27,7 @@ export class Configuration {
   /**
    * Base path for API requests
    */
-  basePath: string = 'https://api.medchain.io/v1';
+  basePath: string = 'https://api.iwosan.io/v1';
 
   /**
    * Base options for axios requests

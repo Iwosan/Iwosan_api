@@ -25,7 +25,7 @@ if [ ! -f .env ]; then
     echo "✅ .env file created"
     echo ""
     echo "⚠️  Please configure the following variables in .env:"
-    echo "   - OTEL_SERVICE_NAME=healthy-stellar-backend"
+    echo "   - OTEL_SERVICE_NAME=iwosan-api"
     echo "   - OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/v1/traces"
     echo "   - OTEL_SAMPLING_RATE=1.0"
     echo ""

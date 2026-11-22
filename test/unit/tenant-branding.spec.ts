@@ -127,7 +127,7 @@ describe('TenantBrandingService — branding propagation', () => {
     const branding = await service.getBrandingOrDefault(TENANT_ID);
 
     const emailContext = {
-      organizationName: branding.organizationName ?? 'MedChain',
+      organizationName: branding.organizationName ?? 'Iwosan',
       logoUrl: branding.logoUrl ?? '',
       primaryColor: branding.primaryColor ?? '#667eea',
       secondaryColor: branding.secondaryColor ?? '#764ba2',

@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 /**
- * MedChain API
+ * Iwosan API
  * Blockchain-based medical records management API
  *
  * OpenAPI spec version: 1.0.0

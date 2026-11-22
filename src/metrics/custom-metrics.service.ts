@@ -10,38 +10,38 @@ import { Counter, Histogram, Gauge } from 'prom-client';
 // ── Existing metrics ──────────────────────────────────────────────────────────
 
 export const RecordsUploadedCounter = makeCounterProvider({
-  name: 'medchain_records_uploaded_total',
+  name: 'iwosan_records_uploaded_total',
   help: 'Total number of medical records uploaded',
   labelNames: ['tenant', 'record_type'],
 });
 
 export const StellarTxDurationHistogram = makeHistogramProvider({
-  name: 'medchain_stellar_tx_duration_seconds',
+  name: 'iwosan_stellar_tx_duration_seconds',
   help: 'Duration of Stellar blockchain transactions in seconds',
   labelNames: ['operation'],
   buckets: [0.1, 0.5, 1, 2, 5, 10],
 });
 
 export const IpfsUploadDurationHistogram = makeHistogramProvider({
-  name: 'medchain_ipfs_upload_duration_seconds',
+  name: 'iwosan_ipfs_upload_duration_seconds',
   help: 'Duration of IPFS uploads in seconds',
   buckets: [0.1, 0.5, 1, 2, 5, 10, 30],
 });
 
 export const AccessGrantsActiveGauge = makeGaugeProvider({
-  name: 'medchain_access_grants_active',
+  name: 'iwosan_access_grants_active',
   help: 'Number of currently active access grants',
   labelNames: ['tenant'],
 });
 
 export const JobQueueDepthGauge = makeGaugeProvider({
-  name: 'medchain_job_queue_depth',
+  name: 'iwosan_job_queue_depth',
   help: 'Current depth of job queues',
   labelNames: ['queue_name'],
 });
 
 export const FhirRequestsCounter = makeCounterProvider({
-  name: 'medchain_fhir_requests_total',
+  name: 'iwosan_fhir_requests_total',
   help: 'Total number of FHIR API requests',
   labelNames: ['resource_type', 'status'],
 });
@@ -157,17 +157,17 @@ export const StellarTxFailuresCounter = makeCounterProvider({
 export class CustomMetricsService {
   constructor(
     // Existing
-    @InjectMetric('medchain_records_uploaded_total')
+    @InjectMetric('iwosan_records_uploaded_total')
     public recordsUploadedCounter: Counter<string>,
-    @InjectMetric('medchain_stellar_tx_duration_seconds')
+    @InjectMetric('iwosan_stellar_tx_duration_seconds')
     public stellarTxDurationHistogram: Histogram<string>,
-    @InjectMetric('medchain_ipfs_upload_duration_seconds')
+    @InjectMetric('iwosan_ipfs_upload_duration_seconds')
     public ipfsUploadDurationHistogram: Histogram<string>,
-    @InjectMetric('medchain_access_grants_active')
+    @InjectMetric('iwosan_access_grants_active')
     public accessGrantsActiveGauge: Gauge<string>,
-    @InjectMetric('medchain_job_queue_depth')
+    @InjectMetric('iwosan_job_queue_depth')
     public jobQueueDepthGauge: Gauge<string>,
-    @InjectMetric('medchain_fhir_requests_total')
+    @InjectMetric('iwosan_fhir_requests_total')
     public fhirRequestsCounter: Counter<string>,
 
     // New

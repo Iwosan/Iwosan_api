@@ -1,8 +1,8 @@
 {
   "uid": "slo-dashboard",
-  "title": "SLO Dashboard — Healthy Stellar",
+  "title": "SLO Dashboard — Iwosan",
   "description": "Error budget consumption and burn rates for API Availability, API Latency p99, and Stellar Tx Success SLOs.",
-  "tags": ["slo", "error-budget", "medchain"],
+  "tags": ["slo", "error-budget", "iwosan"],
   "timezone": "browser",
   "refresh": "30s",
   "schemaVersion": 38,

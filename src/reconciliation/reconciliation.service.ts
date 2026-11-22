@@ -245,7 +245,7 @@ export class ReconciliationService {
   // ─── Admin Alert ───────────────────────────────────────────────────────────
 
   private async alertAdmin(reports: ReconciliationReport[]): Promise<void> {
-    const adminEmail = this.config.get<string>('ADMIN_EMAIL', 'admin@healthystellar.io');
+    const adminEmail = this.config.get<string>('ADMIN_EMAIL', 'admin@iwosan.io');
     const summary = reports
       .map((r) => `• [${r.discrepancyType}] ${r.adminNote ?? r.patientId ?? ''}`)
       .join('\n');

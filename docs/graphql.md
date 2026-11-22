@@ -1,6 +1,6 @@
 # GraphQL API
 
-Healthy Stellar exposes a GraphQL endpoint powered by Apollo Server (NestJS driver) with
+Iwosan exposes a GraphQL endpoint powered by Apollo Server (NestJS driver) with
 support for queries, mutations, real-time subscriptions, DataLoader batching, and Automatic
 Persisted Queries (APQ).
 

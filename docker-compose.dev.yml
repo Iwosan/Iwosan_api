@@ -4,7 +4,7 @@ services:
   # Jaeger - Distributed Tracing
   jaeger:
     image: jaegertracing/all-in-one:1.53
-    container_name: healthy-stellar-jaeger
+    container_name: iwosan-jaeger
     ports:
       - "5775:5775/udp"   # Zipkin compact thrift
       - "6831:6831/udp"   # Jaeger compact thrift
@@ -21,15 +21,15 @@ services:
       - COLLECTOR_OTLP_ENABLED=true
       - LOG_LEVEL=info
     networks:
-      - healthy-stellar-network
+      - iwosan-network
     restart: unless-stopped
 
   # PostgreSQL Database
   postgres:
     image: postgres:15-alpine
-    container_name: healthy-stellar-postgres-dev
+    container_name: iwosan-postgres-dev
     environment:
-      POSTGRES_DB: healthy_stellar_dev
+      POSTGRES_DB: iwosan_dev
       POSTGRES_USER: dev_user
       POSTGRES_PASSWORD: dev_password
     ports:
@@ -38,26 +38,26 @@ services:
       - postgres_dev_data:/var/lib/postgresql/data
       - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - healthy-stellar-network
+      - iwosan-network
     restart: unless-stopped
 
   # Redis
   redis:
     image: redis:7-alpine
-    container_name: healthy-stellar-redis-dev
+    container_name: iwosan-redis-dev
     ports:
       - "6379:6379"
     volumes:
       - redis_dev_data:/data
     networks:
-      - healthy-stellar-network
+      - iwosan-network
     restart: unless-stopped
     command: redis-server --appendonly yes
 
   # IPFS Node
   ipfs:
     image: ipfs/kubo:latest
-    container_name: healthy-stellar-ipfs-dev
+    container_name: iwosan-ipfs-dev
     ports:
       - "4001:4001"   # P2P
       - "5001:5001"   # API
@@ -65,7 +65,7 @@ services:
     volumes:
       - ipfs_dev_data:/data/ipfs
     networks:
-      - healthy-stellar-network
+      - iwosan-network
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5001/api/v0/id"]
@@ -75,7 +75,7 @@ services:
       start_period: 10s
 
 networks:
-  healthy-stellar-network:
+  iwosan-network:
     driver: bridge
 
 volumes:

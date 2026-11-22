@@ -44,7 +44,7 @@ export class LedgerReconciliationService {
     @InjectRepository(ReconciliationRun)
     private readonly runRepo: Repository<ReconciliationRun>,
     private readonly config: ConfigService,
-    @InjectMetric('medchain_reconciliation_discrepancies_total')
+    @InjectMetric('iwosan_reconciliation_discrepancies_total')
     private readonly discrepanciesCounter: Counter<string>,
     private readonly queueService: QueueService,
   ) {}
@@ -193,7 +193,7 @@ export class LedgerReconciliationService {
   private async _alertOps(missingCount: number, runId: string): Promise<void> {
     // Slack webhook URL is optional — if absent we just log.
     const webhookUrl = this.config.get<string>('OPS_SLACK_WEBHOOK_URL');
-    const message = `⚠️ MedChain reconciliation run ${runId}: ${missingCount} missing Stellar transactions detected. Immediate investigation required.`;
+    const message = `⚠️ Iwosan reconciliation run ${runId}: ${missingCount} missing Stellar transactions detected. Immediate investigation required.`;
 
     if (webhookUrl) {
       try {

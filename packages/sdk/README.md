@@ -1,13 +1,13 @@
-# @medchain/sdk
+# @iwosan/sdk
 
-Auto-generated TypeScript SDK for the MedChain Healthcare API — a
+Auto-generated TypeScript SDK for the Iwosan Healthcare API — a
 blockchain-based medical records management API built on
-[Healthy-Stellar-backend](https://github.com/Healthy-Stellar/Healthy-Stellar-backend).
+[Iwosan-api](https://github.com/Iwosan/Iwosan_api).
 
 ## Installation
 
 ```bash
-npm install @medchain/sdk
+npm install @iwosan/sdk
 ```
 
 `axios` is a peer dependency (`^1.x`) — install it alongside the SDK if your
@@ -20,9 +20,9 @@ npm install axios
 ## Quick start
 
 ```ts
-import { AuthApi, RecordsApi, AccessApi, Configuration } from '@medchain/sdk';
+import { AuthApi, RecordsApi, AccessApi, Configuration } from '@iwosan/sdk';
 
-const config = new Configuration({ basePath: 'https://api.medchain.io/v1' });
+const config = new Configuration({ basePath: 'https://api.iwosan.io/v1' });
 
 const authApi = new AuthApi(config);
 const { accessToken } = await authApi.register({
@@ -64,15 +64,15 @@ API_BASE_URL=http://localhost:3000/v1 npx ts-node examples/complete-flow.ts
 | `./graphql` | GraphQL TypeScript types generated from the backend's `docs/schema.graphql` via `npm run generate:graphql-types` (see that script's own docs for regenerating after a schema change) |
 
 Every API class also accepts a scoped import if you only need one surface,
-e.g. `import { RecordsApi } from '@medchain/sdk/apis'` or
-`import type { UserInfo } from '@medchain/sdk/models'` — see the `exports`
+e.g. `import { RecordsApi } from '@iwosan/sdk/apis'` or
+`import type { UserInfo } from '@iwosan/sdk/models'` — see the `exports`
 map in [`package.json`](package.json).
 
 ## Configuration
 
 ```ts
 new Configuration({
-  basePath: 'https://api.medchain.io/v1', // defaults to this if omitted
+  basePath: 'https://api.iwosan.io/v1', // defaults to this if omitted
   accessToken: 'jwt-or-a-()-=>-string-fn',
   apiKey: 'static-key-or-a-()-=>-string-fn',
   baseOptions: { /* passed through to the underlying axios instance */ },
@@ -86,7 +86,7 @@ callback instead of updating `Configuration` by hand.
 ## Building from source
 
 This package lives at `packages/sdk` in the
-[Healthy-Stellar-backend](https://github.com/Healthy-Stellar/Healthy-Stellar-backend)
+[Iwosan-api](https://github.com/Iwosan/Iwosan_api)
 monorepo and is not maintained as a standalone repository.
 
 ```bash

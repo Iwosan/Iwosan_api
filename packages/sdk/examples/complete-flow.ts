@@ -258,7 +258,7 @@ async function revokeAccess(
  * Main execution
  */
 async function main(): Promise<void> {
-  console.log('🚀 MedChain SDK - Complete Flow Example');
+  console.log('🚀 Iwosan SDK - Complete Flow Example');
   console.log('=====================================');
   console.log(`API Base URL: ${API_BASE_URL}`);
 

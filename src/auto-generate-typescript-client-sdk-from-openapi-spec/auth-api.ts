@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * MedChain API - AuthApi
+ * Iwosan API - AuthApi
  * NOTE: Auto-generated. Do not edit manually.
  */
 import { AxiosPromise, AxiosRequestConfig } from 'axios';

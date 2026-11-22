@@ -53,7 +53,7 @@ jobs:
           retention-days: 30
 
       - name: Build production Docker image
-        run: docker build --tag healthy-stellar-backend:ci .
+        run: docker build --tag iwosan-api:ci .
 
   # ── 2. Deep dependency scan with Trivy ─────────────────────────────────────
   trivy-scan:
@@ -141,12 +141,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t healthy-stellar-backend:${{ github.sha }} .
+        run: docker build -t iwosan-api:${{ github.sha }} .
 
       - name: Run Trivy container scan
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: 'healthy-stellar-backend:${{ github.sha }}'
+          image-ref: 'iwosan-api:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-container.sarif'
           severity: 'HIGH,CRITICAL'

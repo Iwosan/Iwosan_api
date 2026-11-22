@@ -45,7 +45,7 @@ export class StellarStreamService implements OnModuleInit, OnModuleDestroy {
     private readonly grantRepo: Repository<AccessGrant>,
     private readonly config: ConfigService,
     private readonly events: EventEmitter2,
-    @InjectMetric('medchain_stellar_stream_events_processed_total')
+    @InjectMetric('iwosan_stellar_stream_events_processed_total')
     private readonly eventsCounter: Counter<string>,
   ) {}
 

@@ -1,6 +1,6 @@
 # Webhooks
 
-This guide is for integrators building against the Healthy-Stellar backend webhook
+This guide is for integrators building against the Iwosan backend webhook
 system: subscribing to events, verifying deliveries, and receiving the platform's
 own inbound provider callbacks.
 
@@ -63,7 +63,7 @@ Create request body (`CreateWebhookSubscriptionDto`):
 
 ```jsonc
 {
-  "url": "https://example.com/webhooks/healthy-stellar", // required, http(s)
+  "url": "https://example.com/webhooks/iwosan", // required, http(s)
   "events": ["record.uploaded", "access.granted"],        // required, string[]
   "secret": "optional-custom-secret",                     // optional; auto-generated if omitted
   "maxRetries": 5                                          // optional, 1..10, default 5
@@ -155,11 +155,11 @@ function verifySignature(rawBody, signatureHeader, secret) {
 
 const app = express();
 // Capture the raw body before JSON parsing.
-app.use('/webhooks/healthy-stellar', express.json({
+app.use('/webhooks/iwosan', express.json({
   verify: (req, _res, buf) => { req.rawBody = buf; },
 }));
 
-app.post('/webhooks/healthy-stellar', (req, res) => {
+app.post('/webhooks/iwosan', (req, res) => {
   if (!verifySignature(req.rawBody, req.get('X-Webhook-Signature'), process.env.HS_WEBHOOK_SECRET)) {
     return res.status(401).send('invalid signature');
   }
@@ -192,7 +192,7 @@ def verify_signature(raw_body: bytes, signature_header: str) -> bool:
     expected = hmac.new(SECRET, raw_body, hashlib.sha256).hexdigest()
     return hmac.compare_digest(received_hex, expected)
 
-@app.post("/webhooks/healthy-stellar")
+@app.post("/webhooks/iwosan")
 def receive():
     if not verify_signature(request.get_data(), request.headers.get("X-Webhook-Signature", "")):
         abort(401)

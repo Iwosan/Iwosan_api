@@ -34,14 +34,14 @@ export class MetricsController {
     description: 'Metrics returned successfully',
     content: {
       'text/plain': {
-        example: `# HELP medchain_records_uploaded_total Total number of medical records uploaded
-# TYPE medchain_records_uploaded_total counter
-medchain_records_uploaded_total{tenant="hospital-a",record_type="patient"} 1234
+        example: `# HELP iwosan_records_uploaded_total Total number of medical records uploaded
+# TYPE iwosan_records_uploaded_total counter
+iwosan_records_uploaded_total{tenant="hospital-a",record_type="patient"} 1234
 
-# HELP medchain_stellar_tx_duration_seconds Duration of Stellar blockchain transactions in seconds
-# TYPE medchain_stellar_tx_duration_seconds histogram
-medchain_stellar_tx_duration_seconds_bucket{operation="anchor_record",le="0.1"} 45
-medchain_stellar_tx_duration_seconds_bucket{operation="anchor_record",le="0.5"} 120`,
+# HELP iwosan_stellar_tx_duration_seconds Duration of Stellar blockchain transactions in seconds
+# TYPE iwosan_stellar_tx_duration_seconds histogram
+iwosan_stellar_tx_duration_seconds_bucket{operation="anchor_record",le="0.1"} 45
+iwosan_stellar_tx_duration_seconds_bucket{operation="anchor_record",le="0.5"} 120`,
       },
     },
   })

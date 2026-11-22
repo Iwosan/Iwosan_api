@@ -1,6 +1,6 @@
 import { trace, SpanStatusCode, SpanKind } from '@opentelemetry/api';
 
-const tracer = trace.getTracer('healthy-stellar-services');
+const tracer = trace.getTracer('iwosan-services');
 
 /**
  * Method decorator that wraps the decorated async service method in an
