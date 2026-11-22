@@ -32,6 +32,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { AuthController } from './controllers/auth.controller';
 import { MfaController } from './controllers/mfa.controller';
 import { ProvidersController } from './controllers/providers.controller';
+import { StellarAuthController } from './controllers/stellar-auth.controller';
 
 // Guards
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
@@ -43,6 +44,7 @@ import { ApiKeyGuard } from './guards/api-key.guard';
 import { ProviderDirectoryService } from './services/provider-directory.service';
 
 import { RefreshTokenStoreService } from './services/refresh-token-store.service';
+import { StellarAuthService } from './services/stellar-auth.service';
 import { SessionCleanupTask } from './tasks/session-cleanup.task';
 import { SecretRotationService } from './services/secret-rotation.service';
 import { SecretRotationController } from './controllers/secret-rotation.controller';
@@ -82,6 +84,7 @@ const mailerProvider = buildMailerProvider();
     AuthService,
     PasswordValidationService,
     AuthTokenService,
+    StellarAuthService,
     MfaService,
     SessionManagementService,
     ApiKeyService,
@@ -101,11 +104,12 @@ const mailerProvider = buildMailerProvider();
     SessionCleanupTask,
     ...(mailerProvider ? [mailerProvider] : []),
   ],
-  controllers: [AuthController, MfaController, ProvidersController, SecretRotationController],
+  controllers: [AuthController, StellarAuthController, MfaController, ProvidersController, SecretRotationController],
   exports: [
     AuthService,
     PasswordValidationService,
     AuthTokenService,
+    StellarAuthService,
     MfaService,
     SessionManagementService,
     ApiKeyService,
