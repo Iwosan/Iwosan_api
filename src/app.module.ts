@@ -94,6 +94,7 @@ import { BedOccupancyModule } from './bed-occupancy/bed-occupancy.module';
 import { MedicalStaffModule } from './medical-staff/medical-staff.module';
 import { AppointmentsModule } from './appointments/appointments.module';
 import { MarketplaceModule } from './marketplace/marketplace.module';
+import { AnchorModule } from './payments/anchor/anchor.module';
 import { SurgicalModule } from './surgical-management-system/surgical/Surgical.module';
 import { TelemedicineModule } from './telemedicine-and-remote/src/telemedicine/Telemedicine.module';
 import { User } from './auth/entities/user.entity';
@@ -190,6 +191,7 @@ import { MigrationCliModule } from './Migration-CLI/migration-cli.module';
     EhrImportModule,
     AppointmentsModule,
     MarketplaceModule,
+    AnchorModule,
     SurgicalModule,
     TelemedicineModule,
     HospitalConfigurationModule,
