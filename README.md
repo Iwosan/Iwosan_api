@@ -23,6 +23,15 @@ Payments are held in a Soroban escrow contract and released to the seller only w
 
 The existing clinical modules (records, appointments, pharmacy, lab, telemedicine) remain and support the marketplace.
 
+### Stellar roadmap
+
+Planned backend work (full plan in [docs/STELLAR_ROADMAP.md](docs/STELLAR_ROADMAP.md)):
+
+- **Payments:** path payment quotes so buyers pay in NGN and sellers receive USDC ([#2](https://github.com/Iwosan/Iwosan_api/issues/2)), SEP-24 anchor cash in/out ([#4](https://github.com/Iwosan/Iwosan_api/issues/4)), SEP-31 diaspora payments ([#5](https://github.com/Iwosan/Iwosan_api/issues/5))
+- **Onboarding:** SEP-10 wallet login ([#3](https://github.com/Iwosan/Iwosan_api/issues/3)), sponsored accounts and fee-bumps so users need no XLM ([#6](https://github.com/Iwosan/Iwosan_api/issues/6))
+- **Marketplace:** index on-chain escrow orders ([#7](https://github.com/Iwosan/Iwosan_api/issues/7)), reviews from completed orders only ([#11](https://github.com/Iwosan/Iwosan_api/issues/11)), oracle prices in NGN/USDC/XLM ([#10](https://github.com/Iwosan/Iwosan_api/issues/10))
+- **Drug safety:** batch verification by QR ([#8](https://github.com/Iwosan/Iwosan_api/issues/8)), recall notifications ([#9](https://github.com/Iwosan/Iwosan_api/issues/9))
+
 The marketplace catalogue API is in `src/marketplace` (`GET/POST /marketplace/listings`, `PATCH /marketplace/listings/:id/verify`). On-chain escrow is handled by the `iwosan-marketplace` contract in [Iwosan_contract](https://github.com/Iwosan/Iwosan_contract).
 
 ## Getting started
