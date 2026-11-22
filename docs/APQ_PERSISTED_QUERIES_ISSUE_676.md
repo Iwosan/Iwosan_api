@@ -151,10 +151,3 @@ npx jest --selectProjects unit --testPathPatterns 'apq.plugin.spec.ts'
 
 All 7 tests pass ✅
 
----
-
-## Pull Request
-- **PR**: https://github.com/Healthy-Stellar/Healthy-Stellar-backend/pull/725
-- **Branch**: `feat/graphql-persisted-queries-apq-676`
-
-closes #676
