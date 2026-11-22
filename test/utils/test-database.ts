@@ -23,7 +23,7 @@ export async function getTestDataSource(): Promise<DataSource> {
     port: parseInt(process.env.TEST_DB_PORT || '5432'),
     username: process.env.TEST_DB_USERNAME || 'test_user',
     password: process.env.TEST_DB_PASSWORD || 'test_password',
-    database: process.env.TEST_DB_NAME || 'healthy_stellar_test',
+    database: process.env.TEST_DB_NAME || 'iwosan_test',
     entities: [join(__dirname, '../../src/**/*.entity{.ts,.js}')],
     synchronize: false, // Use migrations instead
     logging: process.env.DEBUG === 'true',

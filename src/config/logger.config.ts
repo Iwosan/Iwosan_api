@@ -113,7 +113,7 @@ export const loggerConfig: Params = {
                 }
               : undefined,
             labels: {
-              app: process.env.APP_NAME || 'healthy-stellar-backend',
+              app: process.env.APP_NAME || 'iwosan-api',
               environment: process.env.NODE_ENV || 'production',
             },
             batching: true,

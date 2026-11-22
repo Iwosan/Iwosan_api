@@ -146,7 +146,7 @@
     "unsupportedFileType": "نوع الملف غير مدعوم"
   },
   "email": {
-    "welcome": "أهلا وسهلا بك في MedChain",
+    "welcome": "أهلا وسهلا بك في Iwosan",
     "verifyEmail": "يرجى التحقق من عنوان بريدك الإلكتروني",
     "resetPassword": "إعادة تعيين كلمة المرور",
     "accessGranted": "تم منحك الوصول إلى سجل طبي",
@@ -156,7 +156,7 @@
     "accountDisabled": "تم تعطيل حسابك",
     "suspiciousActivity": "تم الكشف عن نشاط مريب على حسابك",
     "confirmAction": "يرجى تأكيد هذا الإجراء",
-    "notificationTitle": "إشعار من MedChain"
+    "notificationTitle": "إشعار من Iwosan"
   },
   "pagination": {
     "page": "الصفحة",

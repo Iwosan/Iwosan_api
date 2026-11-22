@@ -26,7 +26,7 @@ Each tenant can serve the patient portal and API under their own hostname (e.g. 
 ```
 Type  : CNAME
 Name  : portal.hospital.com
-Value : api.healthystellar.io        ← platform canonical hostname
+Value : api.iwosan.io        ← platform canonical hostname
 TTL   : 300
 ```
 
@@ -57,14 +57,14 @@ portal.hospital.com/app       ← path not allowed
 
 ```bash
 # 1. Set the custom domain via the admin API
-curl -X PUT https://api.healthystellar.io/admin/tenants/<tenantId>/branding \
+curl -X PUT https://api.iwosan.io/admin/tenants/<tenantId>/branding \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"customDomain": "portal.hospital.com"}'
 
 # 2. Confirm DNS resolves correctly
 dig CNAME portal.hospital.com +short
-# Expected: api.healthystellar.io.
+# Expected: api.iwosan.io.
 
 # 3. Test a request through the custom domain (after TLS is configured)
 curl https://portal.hospital.com/health
@@ -76,4 +76,4 @@ curl https://portal.hospital.com/health
 
 - Automatic TLS certificate provisioning via ACME / Let's Encrypt.
 - Domain ownership verification (DNS TXT record challenge).
-- Wildcard subdomain routing (`*.healthystellar.io`).
+- Wildcard subdomain routing (`*.iwosan.io`).

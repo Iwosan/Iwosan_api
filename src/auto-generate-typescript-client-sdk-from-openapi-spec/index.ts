@@ -1,6 +1,6 @@
 // ─── Client ──────────────────────────────────────────────────────────────────
-export { MedChainClient } from './client';
-export type { MedChainClientOptions } from './client';
+export { IwosanClient } from './client';
+export type { IwosanClientOptions } from './client';
 
 // ─── API Classes ─────────────────────────────────────────────────────────────
 export { AuthApi, RecordsApi, AccessApi, AuditApi } from './generated/api';

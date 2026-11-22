@@ -48,11 +48,11 @@ import { QUEUE_NAMES } from '../queues/queue.constants';
     PrometheusModule.register({
       defaultMetrics: {
         enabled: true,
-        config: { prefix: 'medchain_' },
+        config: { prefix: 'iwosan_' },
       },
       path: '/metrics',
       defaultLabels: {
-        app: 'healthy-stellar-backend',
+        app: 'iwosan-api',
         environment: process.env.NODE_ENV || 'development',
       },
     }),

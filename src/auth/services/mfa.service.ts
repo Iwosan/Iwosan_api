@@ -55,8 +55,8 @@ export class MfaService {
     if (!user) throw new NotFoundException('User not found');
 
     const secret = speakeasy.generateSecret({
-      name: `Healthy Stellar (${user.email})`,
-      issuer: 'Healthy Stellar',
+      name: `Iwosan (${user.email})`,
+      issuer: 'Iwosan',
       length: 32,
     });
 
@@ -281,7 +281,7 @@ export class MfaService {
     await this.sendEmail(
       user.email,
       'Security Alert: 2FA Recovery Code Used',
-      `A two-factor authentication recovery code was used to access your Healthy Stellar account on ${new Date().toUTCString()}. ` +
+      `A two-factor authentication recovery code was used to access your Iwosan account on ${new Date().toUTCString()}. ` +
         `If you did not initiate this action, please contact support immediately and change your password.`,
     );
   }
@@ -292,7 +292,7 @@ export class MfaService {
     await this.sendEmail(
       user.email,
       'Your 2FA Recovery Codes Have Been Regenerated',
-      `Your Healthy Stellar two-factor authentication recovery codes were regenerated on ${new Date().toUTCString()}. ` +
+      `Your Iwosan two-factor authentication recovery codes were regenerated on ${new Date().toUTCString()}. ` +
         `Your previous codes are no longer valid. If you did not request this, contact support immediately.`,
     );
   }

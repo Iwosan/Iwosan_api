@@ -142,7 +142,7 @@ const program = new Command();
 
 program
   .name('migration-cli')
-  .description('Healthy-Stellar Database Migration CLI')
+  .description('Iwosan Database Migration CLI')
   .version('1.0.0');
 
 // ── migration:status ─────────────────────────────────────────────────────────

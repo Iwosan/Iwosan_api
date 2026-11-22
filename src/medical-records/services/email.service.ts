@@ -14,8 +14,8 @@ export class EmailService {
     private readonly configService: ConfigService,
   ) {
     this.isTestEnv = configService.get<string>('NODE_ENV') === 'test';
-    this.fromAddress = configService.get<string>('MAIL_FROM_ADDRESS', 'noreply@healthystellar.com');
-    this.fromName = configService.get<string>('MAIL_FROM_NAME', 'HealthyStellar');
+    this.fromAddress = configService.get<string>('MAIL_FROM_ADDRESS', 'noreply@iwosan.com');
+    this.fromName = configService.get<string>('MAIL_FROM_NAME', 'Iwosan');
   }
 
   async sendReportReadyEmail(

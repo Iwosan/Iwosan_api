@@ -50,11 +50,11 @@ async function checkDocker(): Promise<void> {
 }
 
 async function startTestDatabase(): Promise<void> {
-  const containerName = 'healthy-stellar-test-db';
+  const containerName = 'iwosan-test-db';
   const dbPort = process.env.TEST_DB_PORT || '5432';
   const dbUser = process.env.TEST_DB_USERNAME || 'test_user';
   const dbPassword = process.env.TEST_DB_PASSWORD || 'test_password';
-  const dbName = process.env.TEST_DB_NAME || 'healthy_stellar_test';
+  const dbName = process.env.TEST_DB_NAME || 'iwosan_test';
 
   try {
     // Check if container already exists
@@ -104,10 +104,10 @@ async function waitForDatabase(): Promise<void> {
       const dbHost = process.env.TEST_DB_HOST || 'localhost';
       const dbPort = process.env.TEST_DB_PORT || '5432';
       const dbUser = process.env.TEST_DB_USERNAME || 'test_user';
-      const dbName = process.env.TEST_DB_NAME || 'healthy_stellar_test';
+      const dbName = process.env.TEST_DB_NAME || 'iwosan_test';
 
       await execAsync(
-        `docker exec healthy-stellar-test-db pg_isready -h ${dbHost} -p 5432 -U ${dbUser} -d ${dbName}`,
+        `docker exec iwosan-test-db pg_isready -h ${dbHost} -p 5432 -U ${dbUser} -d ${dbName}`,
       );
 
       console.log('✓ Database is ready');

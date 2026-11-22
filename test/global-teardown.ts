@@ -28,7 +28,7 @@ export default async function globalTeardown() {
 }
 
 async function stopTestDatabase(): Promise<void> {
-  const containerName = 'healthy-stellar-test-db';
+  const containerName = 'iwosan-test-db';
 
   try {
     const { stdout } = await execAsync(
@@ -39,7 +39,7 @@ async function stopTestDatabase(): Promise<void> {
       console.log('  Stopping test database container...');
       await execAsync(`docker stop ${containerName}`);
       console.log('✓ Test database container stopped');
-      console.log('  (Container preserved for debugging. Run "docker rm healthy-stellar-test-db" to remove)');
+      console.log('  (Container preserved for debugging. Run "docker rm iwosan-test-db" to remove)');
     } else {
       console.log('✓ Test database container was not running');
     }
@@ -49,7 +49,7 @@ async function stopTestDatabase(): Promise<void> {
 }
 
 async function removeTestDatabase(): Promise<void> {
-  const containerName = 'healthy-stellar-test-db';
+  const containerName = 'iwosan-test-db';
 
   try {
     const { stdout } = await execAsync(

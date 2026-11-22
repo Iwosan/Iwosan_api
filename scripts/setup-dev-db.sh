@@ -49,7 +49,7 @@ docker-compose up -d postgres
 # Wait for PostgreSQL to be ready
 echo "⏳ Waiting for PostgreSQL to be ready..."
 for i in {1..30}; do
-    if docker-compose exec -T postgres pg_isready -U medical_user -d healthy_stellar > /dev/null 2>&1; then
+    if docker-compose exec -T postgres pg_isready -U medical_user -d iwosan > /dev/null 2>&1; then
         echo -e "${GREEN}✓${NC} PostgreSQL is ready"
         break
     fi
@@ -70,7 +70,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=medical_user
 DB_PASSWORD=$(cat secrets/db_password.txt)
-DB_NAME=healthy_stellar
+DB_NAME=iwosan
 DB_SSL_ENABLED=false
 
 # Redis Configuration
@@ -105,12 +105,12 @@ echo ""
 echo "📊 Connection Details:"
 echo "  Host:     localhost"
 echo "  Port:     5432"
-echo "  Database: healthy_stellar"
+echo "  Database: iwosan"
 echo "  Username: medical_user"
 echo "  Password: (see secrets/db_password.txt)"
 echo ""
 echo "🔧 Useful Commands:"
-echo "  Connect:  docker-compose exec postgres psql -U medical_user healthy_stellar"
+echo "  Connect:  docker-compose exec postgres psql -U medical_user iwosan"
 echo "  Logs:     docker-compose logs -f postgres"
 echo "  Stop:     docker-compose stop postgres"
 echo "  Restart:  docker-compose restart postgres"

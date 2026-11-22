@@ -17,7 +17,7 @@ import {
 
 /** URL pointing to the migration guide for deprecated API versions. */
 const MIGRATION_GUIDE_URL =
-  'https://github.com/Healthy-Stellar/Healthy-Stellar-backend/blob/main/docs/api-versioning.md';
+  'https://github.com/Iwosan/Iwosan_api/blob/main/docs/api-versioning.md';
 
 @Injectable()
 export class ApiVersionLifecycleInterceptor implements NestInterceptor {

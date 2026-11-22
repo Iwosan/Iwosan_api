@@ -148,7 +148,7 @@ describe('DatabaseConfig', () => {
     it('should set application name', () => {
       mockConfig({ NODE_ENV: 'production' });
       const options: any = databaseConfig.createTypeOrmOptions();
-      expect(options.extra.application_name).toBe('healthy-stellar-backend');
+      expect(options.extra.application_name).toBe('iwosan-api');
     });
 
     it('should default slow query threshold to 100ms', () => {

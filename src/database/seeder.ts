@@ -64,7 +64,7 @@ async function seed() {
     for (let i = 0; i < 10; i++) {
       const role = providerRoles[i % 2];
       const provider = userRepo.create({
-        email: faker.internet.email({ provider: 'healthystellar.dev' }),
+        email: faker.internet.email({ provider: 'iwosan.dev' }),
         passwordHash: testPassword,
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),

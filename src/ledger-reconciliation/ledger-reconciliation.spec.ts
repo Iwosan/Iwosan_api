@@ -76,7 +76,7 @@ function buildModule(
             useValue: { get: jest.fn().mockReturnValue('testnet') },
           },
           {
-            provide: 'PROM_METRIC_MEDCHAIN_RECONCILIATION_DISCREPANCIES_TOTAL',
+            provide: 'PROM_METRIC_IWOSAN_RECONCILIATION_DISCREPANCIES_TOTAL',
             useValue: discrepanciesCounter,
           },
           {

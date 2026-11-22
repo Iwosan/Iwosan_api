@@ -131,7 +131,7 @@ export class ApiErrorCodeDocumentation {
   @ApiProperty({
     description: 'Recommended SDK implementation for error handling',
     example: `
-import { AppErrorCode } from '@healthy-stellar/sdk';
+import { AppErrorCode } from '@iwosan/sdk';
 
 // Type-safe error handling
 if (error.code === AppErrorCode.RECORD_VERSION_CONFLICT) {

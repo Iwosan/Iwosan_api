@@ -1,5 +1,5 @@
 {
-  "name": "healthy-stellar-backend",
+  "name": "iwosan-api",
   "version": "1.0.0",
   "description": "NestJS Backend for Decentralized Healthcare System with Stellar Integration",
   "author": "",
@@ -78,14 +78,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/big14way/Healthy-Stellar-backend.git"
+    "url": "git+https://github.com/Iwosan/Iwosan_api.git"
   },
   "keywords": [],
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/big14way/Healthy-Stellar-backend/issues"
+    "url": "https://github.com/Iwosan/Iwosan_api/issues"
   },
-  "homepage": "https://github.com/big14way/Healthy-Stellar-backend#readme",
+  "homepage": "https://github.com/Iwosan/Iwosan_api#readme",
   "dependencies": {
     "@apollo/server": "^5.4.0",
     "@aws-sdk/client-kms": "^3.997.0",

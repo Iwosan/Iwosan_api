@@ -10,7 +10,7 @@ import { NotificationsService } from '../../notifications/services/notifications
 @Injectable()
 export class BackupVerificationService {
   private readonly logger = new Logger(BackupVerificationService.name);
-  private readonly adminEmail = process.env.ADMIN_EMAIL || 'admin@healthystellar.io';
+  private readonly adminEmail = process.env.ADMIN_EMAIL || 'admin@iwosan.io';
 
   constructor(
     @InjectRepository(BackupLog)

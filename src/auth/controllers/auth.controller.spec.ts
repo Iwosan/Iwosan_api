@@ -279,7 +279,7 @@ describe('POST /auth/forgot-password (#1277)', () => {
       expect.objectContaining({
         to: 'user@example.com',
         subject: 'Password Reset Request',
-        text: expect.stringContaining('https://healthystellar.org/reset-password?token=raw-secret-token-123'),
+        text: expect.stringContaining('https://iwosan.org/reset-password?token=raw-secret-token-123'),
       }),
     );
   });

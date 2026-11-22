@@ -57,7 +57,7 @@ openapi-generator-cli generate \
   -c "$OPENAPI_CONFIG" \
   --skip-validate-spec \
   --additional-properties=useSingleRequestParameter=false \
-  --additional-properties=npmName=@medchain/sdk \
+  --additional-properties=npmName=@iwosan/sdk \
   --additional-properties=npmVersion=1.0.0
 
 echo ""

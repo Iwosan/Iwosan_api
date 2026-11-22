@@ -146,7 +146,7 @@
     "unsupportedFileType": "File type is not supported"
   },
   "email": {
-    "welcome": "Welcome to MedChain",
+    "welcome": "Welcome to Iwosan",
     "verifyEmail": "Please verify your email address",
     "resetPassword": "Reset your password",
     "accessGranted": "You have been granted access to a medical record",
@@ -156,7 +156,7 @@
     "accountDisabled": "Your account has been disabled",
     "suspiciousActivity": "Suspicious activity detected on your account",
     "confirmAction": "Please confirm this action",
-    "notificationTitle": "Notification from MedChain"
+    "notificationTitle": "Notification from Iwosan"
   },
   "pagination": {
     "page": "Page",

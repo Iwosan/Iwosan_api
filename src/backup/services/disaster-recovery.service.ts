@@ -327,7 +327,7 @@ export class DisasterRecoveryService {
   private async restoreDatabase(backupPath: string, targetDb?: string): Promise<void> {
     const dbHost = validateDbHost(process.env.DB_HOST || 'localhost');
     const dbPort = validateDbPort(process.env.DB_PORT || '5432');
-    const dbName = validateDbIdentifier(targetDb || process.env.DB_NAME || 'healthy_stellar', 'DB_NAME');
+    const dbName = validateDbIdentifier(targetDb || process.env.DB_NAME || 'iwosan', 'DB_NAME');
     const dbUser = validateDbIdentifier(process.env.DB_USERNAME || 'medical_user', 'DB_USERNAME');
 
     await spawnAsync(

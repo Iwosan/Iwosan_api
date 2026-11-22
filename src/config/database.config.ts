@@ -79,7 +79,7 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
         idleTimeoutMillis: this.configService.get<number>('DB_IDLE_TIMEOUT_MS', 30000),
         statement_timeout: this.configService.get<number>('DB_STATEMENT_TIMEOUT_MS', 10000),
         query_timeout: this.configService.get<number>('DB_QUERY_TIMEOUT_MS', 30000),
-        application_name: 'healthy-stellar-backend',
+        application_name: 'iwosan-api',
       },
 
       retryAttempts: MAX_RETRIES,

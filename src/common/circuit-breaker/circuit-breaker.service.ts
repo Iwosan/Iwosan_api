@@ -30,14 +30,14 @@ export class CircuitBreakerService implements OnModuleInit {
   constructor() {
     // Initialize Prometheus metrics
     this.stateGauge = new Gauge({
-      name: 'medchain_circuit_breaker_state',
+      name: 'iwosan_circuit_breaker_state',
       help: 'Circuit breaker state (0=closed, 1=half-open, 2=open)',
       labelNames: ['service'],
       registers: [register],
     });
 
     this.stateChangeCounter = new Counter({
-      name: 'medchain_circuit_breaker_state_changes_total',
+      name: 'iwosan_circuit_breaker_state_changes_total',
       help: 'Total number of circuit breaker state changes',
       labelNames: ['service', 'from_state', 'to_state'],
       registers: [register],

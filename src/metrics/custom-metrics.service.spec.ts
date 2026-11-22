@@ -30,12 +30,12 @@ describe('CustomMetricsService — new metrics', () => {
       providers: [
         CustomMetricsService,
         // Existing (stubs)
-        { provide: 'PROM_METRIC_MEDCHAIN_RECORDS_UPLOADED_TOTAL', useValue: makeCounter() },
-        { provide: 'PROM_METRIC_MEDCHAIN_STELLAR_TX_DURATION_SECONDS', useValue: makeHistogram() },
-        { provide: 'PROM_METRIC_MEDCHAIN_IPFS_UPLOAD_DURATION_SECONDS', useValue: makeHistogram() },
-        { provide: 'PROM_METRIC_MEDCHAIN_ACCESS_GRANTS_ACTIVE', useValue: makeGauge() },
-        { provide: 'PROM_METRIC_MEDCHAIN_JOB_QUEUE_DEPTH', useValue: makeGauge() },
-        { provide: 'PROM_METRIC_MEDCHAIN_FHIR_REQUESTS_TOTAL', useValue: makeCounter() },
+        { provide: 'PROM_METRIC_IWOSAN_RECORDS_UPLOADED_TOTAL', useValue: makeCounter() },
+        { provide: 'PROM_METRIC_IWOSAN_STELLAR_TX_DURATION_SECONDS', useValue: makeHistogram() },
+        { provide: 'PROM_METRIC_IWOSAN_IPFS_UPLOAD_DURATION_SECONDS', useValue: makeHistogram() },
+        { provide: 'PROM_METRIC_IWOSAN_ACCESS_GRANTS_ACTIVE', useValue: makeGauge() },
+        { provide: 'PROM_METRIC_IWOSAN_JOB_QUEUE_DEPTH', useValue: makeGauge() },
+        { provide: 'PROM_METRIC_IWOSAN_FHIR_REQUESTS_TOTAL', useValue: makeCounter() },
         // New
         { provide: 'PROM_METRIC_HTTP_REQUESTS_TOTAL', useValue: httpRequestsTotalCounter },
         { provide: 'PROM_METRIC_HTTP_REQUEST_DURATION_SECONDS', useValue: httpRequestDurationHistogram },

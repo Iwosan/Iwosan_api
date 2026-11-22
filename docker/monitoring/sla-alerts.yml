@@ -1,4 +1,4 @@
-# SLA-Critical Endpoint Alert Rules — Healthy Stellar Backend
+# SLA-Critical Endpoint Alert Rules — Iwosan Backend
 #
 # Covers the SLA-critical request paths (patient record reads, auth, billing/queues).
 # Each alert carries a `runbook_url` annotation linking to the operator runbook
@@ -28,7 +28,7 @@ groups:
         annotations:
           summary: "p99 latency on /patients/* exceeds SLA (2s)"
           description: "p99 latency for /patients/* is {{ $value | humanize }}s over the last 5m (threshold: 2s)."
-          runbook_url: "https://app.healthystellar.io/operator/runbooks/sla-patients-latency"
+          runbook_url: "https://app.iwosan.io/operator/runbooks/sla-patients-latency"
 
       # Error rate > 1% on /auth/* for 2 minutes
       - alert: AuthErrorRateHigh
@@ -46,7 +46,7 @@ groups:
         annotations:
           summary: "Error rate on /auth/* exceeds SLA (1%)"
           description: "/auth/* 5xx error rate is {{ $value | humanizePercentage }} over the last 5m (threshold: 1%)."
-          runbook_url: "https://app.healthystellar.io/operator/runbooks/sla-auth-error-rate"
+          runbook_url: "https://app.iwosan.io/operator/runbooks/sla-auth-error-rate"
 
       # BullMQ queue depth > 1000 for 10 minutes
       - alert: BullMQQueueDepthHigh
@@ -59,4 +59,4 @@ groups:
         annotations:
           summary: "BullMQ queue depth exceeds SLA (1000)"
           description: "Queue {{ $labels.queue }} has {{ $value }} waiting jobs for over 10m (threshold: 1000)."
-          runbook_url: "https://app.healthystellar.io/operator/runbooks/sla-queue-backlog"
+          runbook_url: "https://app.iwosan.io/operator/runbooks/sla-queue-backlog"

@@ -1,6 +1,6 @@
 {
   "dashboard": {
-    "title": "Healthy-Stellar k6 Load Test Dashboard",
+    "title": "Iwosan k6 Load Test Dashboard",
     "tags": ["k6", "load-testing", "performance"],
     "timezone": "browser",
     "panels": [

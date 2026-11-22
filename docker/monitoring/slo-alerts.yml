@@ -1,4 +1,4 @@
-# SLO Burn-Rate Alert Policies — Healthy Stellar Backend
+# SLO Burn-Rate Alert Policies — Iwosan Backend
 #
 # Multi-window burn-rate model (Google SRE Workbook, Chapter 5):
 #   Fast burn  — 14.4× budget rate, detected in 1 h window + 5 m confirmation

@@ -14,7 +14,7 @@ describe('Database Migrations (e2e)', () => {
     // Use test database configuration
     const testConfig = {
       ...dataSourceOptions,
-      database: process.env.DB_NAME_TEST || 'healthy_stellar_test',
+      database: process.env.DB_NAME_TEST || 'iwosan_test',
       logging: false,
     };
 

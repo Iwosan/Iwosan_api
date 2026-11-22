@@ -6,7 +6,7 @@ set -e
 
 BACKUP_DIR="/backups"
 DB_HOST="${DB_HOST:-postgres}"
-DB_NAME="${DB_NAME:-healthy_stellar}"
+DB_NAME="${DB_NAME:-iwosan}"
 DB_USER="${DB_USER:-medical_user}"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 RETENTION_DAYS="${BACKUP_RETENTION_DAYS:-90}"

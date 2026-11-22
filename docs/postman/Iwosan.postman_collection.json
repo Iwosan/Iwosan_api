@@ -1,9 +1,9 @@
 {
   "info": {
-    "name": "MedChain API",
+    "name": "Iwosan API",
     "description": "Blockchain-based medical records management API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "medchain-api"
+    "_exporter_id": "iwosan-api"
   },
   "item": [
     {

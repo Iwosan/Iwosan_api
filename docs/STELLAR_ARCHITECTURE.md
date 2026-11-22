@@ -175,7 +175,7 @@ a Horizon SSE subscription — `horizon.transactions().cursor(cursor).stream()`
    `reconnecting` / `failed`), surfaced by `StellarStreamHealthIndicator`
    (`stellar-stream.health.ts`) on the app's `/health` endpoint.
 4. `StellarStreamEventsCounter` (`stellar-stream.metrics.ts`) increments a
-   Prometheus counter (`medchain_stellar_stream_events_processed_total`) per
+   Prometheus counter (`iwosan_stellar_stream_events_processed_total`) per
    processed event.
 
 This is a genuinely independent path from the write side above: it reads

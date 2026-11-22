@@ -139,7 +139,7 @@ optional; when omitted the configured `DB_NAME` is used.
 ```bash
 curl -X POST -H "Authorization: Bearer $ADMIN_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"backupId":"'$BACKUP_ID'","targetDatabase":"healthy_stellar","performedBy":"operator@example.com"}' \
+  -d '{"backupId":"'$BACKUP_ID'","targetDatabase":"iwosan","performedBy":"operator@example.com"}' \
   "$API_URL/backup/recovery/execute"
 ```
 
@@ -190,7 +190,7 @@ The same drill runs automatically weekly (Sunday 05:00).
 | `BACKUP_DIR` | `/backups` | Directory where backup files are written. |
 | `BACKUP_ENCRYPTION_KEY` | — (required) | Key used for AES-256-GCM backup encryption. |
 | `BACKUP_RETENTION_DAYS` | `90` | Age after which completed backups are deleted. |
-| `ADMIN_EMAIL` | `admin@healthystellar.io` | Recipient of backup integrity alerts. |
+| `ADMIN_EMAIL` | `admin@iwosan.io` | Recipient of backup integrity alerts. |
 | `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD` | — | Source/target database connection. |
 
 ## Related Code

@@ -63,7 +63,7 @@ export class UserImportProcessor extends WorkerHost {
 
         await this.notificationsService.sendEmail(
           row.email,
-          'Welcome to Healthy Stellar',
+          'Welcome to Iwosan',
           'welcome',
           {
             firstName: row.firstName,

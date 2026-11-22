@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex } f
 /**
  * Initial Migration - Create Base Tables
  *
- * Creates all core tables for the Healthy Stellar healthcare system:
+ * Creates all core tables for the Iwosan healthcare system:
  * - users: User accounts with authentication
  * - sessions: User session management
  * - mfa_devices: Multi-factor authentication devices

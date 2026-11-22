@@ -16,7 +16,7 @@ export function initTracing() {
     return null;
   }
 
-  const serviceName = process.env.OTEL_SERVICE_NAME || 'healthy-stellar-backend';
+  const serviceName = process.env.OTEL_SERVICE_NAME || 'iwosan-api';
   const serviceVersion = process.env.npm_package_version || '1.0.0';
   const environment = process.env.NODE_ENV || 'development';
   const samplingRate = parseFloat(process.env.OTEL_SAMPLING_RATE || '1.0');

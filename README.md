@@ -1,6 +1,29 @@
-# Handsoff
+# Iwosan API
 
-Handsoff is a NestJS backend for clinical operations: patient records, appointments, pharmacy, laboratory, analytics, and integrations.
+NestJS backend for Iwosan.
+
+**Iwosan** (Yoruba: *healing*) is a healthcare marketplace on the Stellar network. It lets hospitals, clinics, pharmacies, traditional medicine practitioners and patients:
+
+- **Buy, sell and rent medical equipment**: wheelchairs, oxygen concentrators, hospital beds, diagnostic devices.
+- **Buy orthodox and native drugs**: pharmaceutical drugs and traditional/herbal medicine, each listed with its regulatory number (e.g. NAFDAC).
+- **Hire medical personnel**: nurses, doctors, lab scientists and caregivers, by the day or shift, with licences verified.
+
+Payments are held in a Soroban escrow contract and released to the seller only when the buyer confirms delivery or service. Disputes are resolved by the Iwosan verification desk.
+
+### Gaps Iwosan addresses
+
+| Problem | How Iwosan handles it |
+|---|---|
+| Counterfeit and unregistered drugs | Drug listings must be verified (regulatory number checked) before they can be ordered |
+| Traditional medicine has no trusted channel | Native drugs are a first-class category, with the same verification as orthodox drugs |
+| Expensive equipment sits idle or is out of reach | Equipment can be rented by the day as well as sold |
+| Hard to find vetted medical staff quickly | Personnel listings are hire-only and need a verified practising licence |
+| Paying strangers upfront is risky | Stellar escrow: funds release only on confirmation, refund otherwise |
+| Slow, costly cross-border payment | Settlement in USDC/XLM on Stellar in seconds, at low fees |
+
+The existing clinical modules (records, appointments, pharmacy, lab, telemedicine) remain and support the marketplace.
+
+The marketplace catalogue API is in `src/marketplace` (`GET/POST /marketplace/listings`, `PATCH /marketplace/listings/:id/verify`). On-chain escrow is handled by the `iwosan-marketplace` contract in [Iwosan_contract](https://github.com/Iwosan/Iwosan_contract).
 
 ## Getting started
 ## Table of Contents
@@ -331,7 +354,7 @@ Each region has its own set of environment variables for database, Stellar Horiz
 | `DB_TYPE_EU`                 | EU     | Database type                                         | `postgres`                             |
 | `DB_HOST_EU`                 | EU     | Database host                                         | —                                      |
 | `DB_PORT_EU`                 | EU     | Database port                                         | `5432`                                 |
-| `DB_NAME_EU`                 | EU     | Database name                                         | `healthy_stellar_eu`                   |
+| `DB_NAME_EU`                 | EU     | Database name                                         | `iwosan_eu`                   |
 | `EU_DB_URL`                  | EU     | Database connection URL (overrides individual params) | —                                      |
 | `DB_URL_EU`                  | EU     | Fallback database URL                                 | —                                      |
 | `STELLAR_HORIZON_EU_URL`     | EU     | Stellar Horizon endpoint                              | `https://horizon.eu.stellar.org`       |
@@ -339,7 +362,7 @@ Each region has its own set of environment variables for database, Stellar Horiz
 | `DB_TYPE_US`                 | US     | Database type                                         | `postgres`                             |
 | `DB_HOST_US`                 | US     | Database host                                         | —                                      |
 | `DB_PORT_US`                 | US     | Database port                                         | `5432`                                 |
-| `DB_NAME_US`                 | US     | Database name                                         | `healthy_stellar_us`                   |
+| `DB_NAME_US`                 | US     | Database name                                         | `iwosan_us`                   |
 | `US_DB_URL`                  | US     | Database connection URL (overrides individual params) | —                                      |
 | `DB_URL_US`                  | US     | Fallback database URL                                 | —                                      |
 | `STELLAR_HORIZON_US_URL`     | US     | Stellar Horizon endpoint                              | `https://horizon.us.stellar.org`       |
@@ -347,7 +370,7 @@ Each region has its own set of environment variables for database, Stellar Horiz
 | `DB_TYPE_APAC`               | APAC   | Database type                                         | `postgres`                             |
 | `DB_HOST_APAC`               | APAC   | Database host                                         | —                                      |
 | `DB_PORT_APAC`               | APAC   | Database port                                         | `5432`                                 |
-| `DB_NAME_APAC`               | APAC   | Database name                                         | `healthy_stellar_apac`                 |
+| `DB_NAME_APAC`               | APAC   | Database name                                         | `iwosan_apac`                 |
 | `APAC_DB_URL`                | APAC   | Database connection URL (overrides individual params) | —                                      |
 | `DB_URL_APAC`                | APAC   | Fallback database URL                                 | —                                      |
 | `STELLAR_HORIZON_APAC_URL`   | APAC   | Stellar Horizon endpoint                              | `https://horizon.apac.stellar.org`     |
@@ -355,7 +378,7 @@ Each region has its own set of environment variables for database, Stellar Horiz
 | `DB_TYPE_AFRICA`             | AFRICA | Database type                                         | `postgres`                             |
 | `DB_HOST_AFRICA`             | AFRICA | Database host                                         | —                                      |
 | `DB_PORT_AFRICA`             | AFRICA | Database port                                         | `5432`                                 |
-| `DB_NAME_AFRICA`             | AFRICA | Database name                                         | `healthy_stellar_africa`               |
+| `DB_NAME_AFRICA`             | AFRICA | Database name                                         | `iwosan_africa`               |
 | `AFRICA_DB_URL`              | AFRICA | Database connection URL (overrides individual params) | —                                      |
 | `DB_URL_AFRICA`              | AFRICA | Fallback database URL                                 | —                                      |
 | `STELLAR_HORIZON_AFRICA_URL` | AFRICA | Stellar Horizon endpoint                              | `https://horizon.africa.stellar.org`   |
@@ -367,25 +390,25 @@ Example configuration:
 DEFAULT_REGION=EU
 DB_HOST_EU=postgres-eu.internal.example.com
 DB_PORT_EU=5432
-DB_NAME_EU=healthy_stellar_eu
+DB_NAME_EU=iwosan_eu
 STELLAR_HORIZON_EU_URL=https://horizon.eu.stellar.org
 IPFS_NODES_EU=https://ipfs-eu-1.infura.io:5001
 
 DB_HOST_US=postgres-us.internal.example.com
 DB_PORT_US=5432
-DB_NAME_US=healthy_stellar_us
+DB_NAME_US=iwosan_us
 STELLAR_HORIZON_US_URL=https://horizon.us.stellar.org
 IPFS_NODES_US=https://ipfs-us-1.infura.io:5001
 
 DB_HOST_APAC=postgres-apac.internal.example.com
 DB_PORT_APAC=5432
-DB_NAME_APAC=healthy_stellar_apac
+DB_NAME_APAC=iwosan_apac
 STELLAR_HORIZON_APAC_URL=https://horizon.apac.stellar.org
 IPFS_NODES_APAC=https://ipfs-apac-1.infura.io:5001
 
 DB_HOST_AFRICA=postgres-africa.internal.example.com
 DB_PORT_AFRICA=5432
-DB_NAME_AFRICA=healthy_stellar_africa
+DB_NAME_AFRICA=iwosan_africa
 STELLAR_HORIZON_AFRICA_URL=https://horizon.africa.stellar.org
 IPFS_NODES_AFRICA=https://ipfs-africa-1.infura.io:5001
 ```
@@ -517,7 +540,7 @@ scheme.
 
 ## Postman Collection
 
-Import [`docs/postman/MedChain.postman_collection.json`](docs/postman/MedChain.postman_collection.json). Environments: Local, Testnet, Staging. The collection is generated from OpenAPI; see [how to regenerate the API references](docs/OPENAPI_REGENERATION.md).
+Import [`docs/postman/Iwosan.postman_collection.json`](docs/postman/Iwosan.postman_collection.json). Environments: Local, Testnet, Staging. The collection is generated from OpenAPI; see [how to regenerate the API references](docs/OPENAPI_REGENERATION.md).
 
 ## Database Schema
 

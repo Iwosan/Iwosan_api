@@ -1,6 +1,6 @@
 # Error Handling & Error-Code Catalog
 
-This document is the authoritative reference for how the Healthy-Stellar backend
+This document is the authoritative reference for how the Iwosan backend
 reports errors. It covers:
 
 - the [response envelope](#response-envelope) every error uses,
@@ -61,7 +61,7 @@ Example (`409` optimistic-locking conflict):
 `code` is the stable contract. The published SDK re-exports the enum:
 
 ```ts
-import { AppErrorCode } from '@healthy-stellar/sdk';
+import { AppErrorCode } from '@iwosan/sdk';
 
 try {
   await updateRecord(id, patch, { ifMatch: version });

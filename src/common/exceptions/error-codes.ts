@@ -1,5 +1,5 @@
 /**
- * Centralized error taxonomy for the Healthy-Stellar backend.
+ * Centralized error taxonomy for the Iwosan backend.
  *
  * Every error code that can appear in an API response `code` field is defined
  * here.  The GlobalExceptionFilter maps HTTP status codes and typed exceptions

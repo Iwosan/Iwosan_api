@@ -14,7 +14,7 @@ This design formalizes the security fix for custom domain resolution in the mult
 - **Host header**: HTTP Host header in incoming request (e.g., "hospital.com", "customer-subdomain.app.com")
 - **custom_domain**: Tenant entity field storing the custom domain claimed by that tenant
 - **verified_domain_status**: Tenant entity field tracking verification state: "unverified", "pending_verification", "verified", "failed"
-- **DNS TXT record**: DNS record that proves domain ownership (format: `_healthystellar.hospital.com TXT "tenant-id=xyz"`)
+- **DNS TXT record**: DNS record that proves domain ownership (format: `_iwosan.hospital.com TXT "tenant-id=xyz"`)
 - **Cached domain mapping**: In-memory cache mapping domain→tenant_id for fast O(1) resolution without database queries
 
 ## Bug Details
@@ -200,10 +200,10 @@ Implementation details:
 **3. DNS Verification Service - Create `src/tenant/services/dns-verification.service.ts`**
 
 Implement DNS TXT record verification workflow:
-- Generate TXT record challenge format: `_healthystellar.{domain} TXT "tenant-id={tenantId}"`
+- Generate TXT record challenge format: `_iwosan.{domain} TXT "tenant-id={tenantId}"`
 - Expose method: `initiateVerification(tenantId, domain)` that updates domain status to "pending_verification"
 - Expose method: `verifyDNSRecord(domain, tenantId)` that:
-  - Queries DNS for TXT record at `_healthystellar.{domain}`
+  - Queries DNS for TXT record at `_iwosan.{domain}`
   - Verifies record contains expected tenant-id value
   - On success: updates database, sets verified_domain_status="verified", emits event to update cache
   - On failure: sets verified_domain_status="failed"

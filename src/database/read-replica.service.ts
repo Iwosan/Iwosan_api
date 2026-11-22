@@ -120,7 +120,7 @@ export class ReadReplicaService implements OnModuleInit, OnModuleDestroy {
       extra: {
         max: this.configService.get<number>('DB_REPLICA_POOL_MAX', 5),
         min: this.configService.get<number>('DB_REPLICA_POOL_MIN', 1),
-        application_name: 'healthy-stellar-backend-analytics-replica',
+        application_name: 'iwosan-api-analytics-replica',
       },
     } as DataSourceOptions;
   }

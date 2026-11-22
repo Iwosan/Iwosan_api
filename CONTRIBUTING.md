@@ -1,6 +1,6 @@
-# Contributing to Healthy Stellar Backend & MedChain SDK
+# Contributing to Iwosan Backend & Iwosan SDK
 
-Thank you for your interest in contributing to the **Healthy Stellar Backend**! This repository hosts the core NestJS backend services for our decentralized healthcare platform and the official client SDK (`@medchain/sdk`).
+Thank you for your interest in contributing to the **Iwosan Backend**! This repository hosts the core NestJS backend services for our decentralized healthcare platform and the official client SDK (`@iwosan/sdk`).
 
 We welcome contributions from developers of all skill levels. To maintain code quality, security, and HIPAA compliance across our multi-contributor project, please follow the guidelines outlined below.
 
@@ -15,7 +15,7 @@ We welcome contributions from developers of all skill levels. To maintain code q
 - [Commit Message Format](#commit-message-format)
 - [Code Quality & Safety Checks](#code-quality--safety-checks)
 - [New Controller Security Checklist](#new-controller-security-checklist)
-- [Working with `@medchain/sdk`](#working-with-medchainsdk)
+- [Working with `@iwosan/sdk`](#working-with-iwosansdk)
 - [Testing Guidelines](#testing-guidelines)
 - [Pull Request Process](#pull-request-process)
 
@@ -52,8 +52,8 @@ As a healthcare application handling sensitive Medical and Patient data:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Healthy-Stellar/Healthy-Stellar-backend.git
-   cd Healthy-Stellar-backend
+   git clone https://github.com/Iwosan/Iwosan_api.git
+   cd Iwosan-api
    ```
 
 2. **Install Dependencies**:
@@ -96,13 +96,13 @@ As a healthcare application handling sensitive Medical and Patient data:
 ## Project Architecture & Directory Structure
 
 ```
-Healthy-Stellar-backend/
+Iwosan-api/
 ├── .github/
 │   └── workflows/          # GitHub Actions workflows (CI, migration safety, SDK publishing)
 ├── docs/                   # System documentation & OpenAPI specs
 ├── load-tests/             # k6 performance and load testing scenarios
 ├── packages/
-│   └── sdk/                # @medchain/sdk TypeScript client package
+│   └── sdk/                # @iwosan/sdk TypeScript client package
 ├── scripts/                # Utility scripts (SDK generation, migration checks, benchmarks)
 ├── src/                    # NestJS application source code
 │   ├── appointments/       # Scheduling, booking conflict prevention & advisory locking
@@ -191,7 +191,7 @@ There is **no global authentication guard** in this application. Every controlle
 
 ---
 
-## Working with `@medchain/sdk`
+## Working with `@iwosan/sdk`
 
 The TypeScript SDK lives under `packages/sdk` and is built automatically from the backend OpenAPI/Swagger schema.
 

@@ -145,7 +145,7 @@ export class ReportsService {
       const patient = await this.entityManager.findOne(User, { where: { id: patientId } });
       const branding = tenantId
         ? await this.tenantBrandingService.getBrandingOrDefault(tenantId)
-        : { primaryColor: '#667eea', secondaryColor: '#764ba2', organizationName: 'MedChain' };
+        : { primaryColor: '#667eea', secondaryColor: '#764ba2', organizationName: 'Iwosan' };
       const records = await this.entityManager.find(MedicalRecord, {
         where: { patientId, status: MedicalRecordStatus.ACTIVE },
         order: { createdAt: 'DESC' },
@@ -204,7 +204,7 @@ export class ReportsService {
             patientName: patient?.firstName || 'Patient',
             downloadUrl,
             expiresAt: expiresAt.toISOString(),
-            organizationName: branding.organizationName || 'MedChain',
+            organizationName: branding.organizationName || 'Iwosan',
             logoUrl: branding.logoUrl || '',
             primaryColor: branding.primaryColor || '#667eea',
             secondaryColor: branding.secondaryColor || '#764ba2',
@@ -239,7 +239,7 @@ export class ReportsService {
       doc.on('end', () => resolve(Buffer.concat(chunks)));
       doc.on('error', reject);
 
-      doc.fontSize(20).text(branding.organizationName || 'MedChain', { align: 'center' });
+      doc.fontSize(20).text(branding.organizationName || 'Iwosan', { align: 'center' });
       doc.moveDown();
       doc.fontSize(16).text('Medical Record Report', { align: 'center' });
       doc.moveDown();

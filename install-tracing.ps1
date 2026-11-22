@@ -23,7 +23,7 @@ if (-not (Test-Path .env)) {
     Write-Host "✅ .env file created" -ForegroundColor Green
     Write-Host ""
     Write-Host "⚠️  Please configure the following variables in .env:" -ForegroundColor Yellow
-    Write-Host "   - OTEL_SERVICE_NAME=healthy-stellar-backend"
+    Write-Host "   - OTEL_SERVICE_NAME=iwosan-api"
     Write-Host "   - OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/v1/traces"
     Write-Host "   - OTEL_SAMPLING_RATE=1.0"
     Write-Host ""

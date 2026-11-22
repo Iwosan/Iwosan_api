@@ -9,7 +9,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { trace, SpanStatusCode, SpanKind, context as otelContext } from '@opentelemetry/api';
 import { throwError } from 'rxjs';
 
-const tracer = trace.getTracer('healthy-stellar-http');
+const tracer = trace.getTracer('iwosan-http');
 
 /**
  * Creates a named OTel span for every HTTP request and propagates the

@@ -30,7 +30,7 @@ export function getTestDatabaseConfig(testType: 'unit' | 'e2e' = 'unit'): TypeOr
       port: parseInt(process.env.TEST_DB_PORT || '5432'),
       username: process.env.TEST_DB_USERNAME || 'test_user',
       password: process.env.TEST_DB_PASSWORD || 'test_password',
-      database: process.env.TEST_DB_NAME || 'healthy_stellar_test',
+      database: process.env.TEST_DB_NAME || 'iwosan_test',
       entities: [__dirname + '/../../src/**/*.entity{.ts,.js}'],
       synchronize: true,
       dropSchema: true,

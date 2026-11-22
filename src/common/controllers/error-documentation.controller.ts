@@ -33,12 +33,12 @@ Standard error response structure used throughout the API:
 - \`details\`: Optional structured error details (schema varies by error type)
 
 **SDK Integration:**
-The published SDK at \`@healthy-stellar/sdk\` includes TypeScript definitions for all error codes,
+The published SDK at \`@iwosan/sdk\` includes TypeScript definitions for all error codes,
 allowing type-safe error handling in client applications.
 
 **Example Error Handling:**
 \`\`\`typescript
-import { AppErrorCode } from '@healthy-stellar/sdk';
+import { AppErrorCode } from '@iwosan/sdk';
 
 try {
   const patient = await updatePatient(id, { ... });

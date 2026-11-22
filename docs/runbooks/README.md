@@ -1,7 +1,7 @@
 # Operator Runbooks
 
 Operational procedures for operating, troubleshooting, recovering, and maintaining
-Healthy-Stellar. These runbooks are written for on-call engineers and operators who
+Iwosan. These runbooks are written for on-call engineers and operators who
 already have access to the production environment.
 
 > These documents are operational runbooks. They are **not** application code. The

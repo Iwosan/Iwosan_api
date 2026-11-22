@@ -523,7 +523,7 @@ export class MrnGeneratorService {
 
   /**
    * Generate a unique Medical Record Number
-   * Format: HHS-YYYY-NNNNNN (HHS = Healthy-Stellar, YYYY = Year, NNNNNN = Sequential)
+   * Format: HHS-YYYY-NNNNNN (HHS = Iwosan, YYYY = Year, NNNNNN = Sequential)
    */
   async generateMrn(): Promise<string> {
     const prefix = 'HHS';

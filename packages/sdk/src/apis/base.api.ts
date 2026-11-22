@@ -1,5 +1,5 @@
 /**
- * Base API class for MedChain SDK
+ * Base API class for Iwosan SDK
  * All API classes extend from this base
  */
 

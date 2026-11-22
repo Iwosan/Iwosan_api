@@ -20,7 +20,7 @@ import { DLQ_WORKER_SETTINGS } from '../../dlq/dlq-retry.strategy';
 })
 export class ContractWritesProcessor extends WorkerHost {
   private readonly logger = new Logger(ContractWritesProcessor.name);
-  private readonly tracer = trace.getTracer('healthy-stellar-backend');
+  private readonly tracer = trace.getTracer('iwosan-api');
 
   constructor(
     @Inject(StellarContractService)

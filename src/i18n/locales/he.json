@@ -128,7 +128,7 @@
     "unsupportedFileType": "סוג הקובץ אינו נתמך"
   },
   "email": {
-    "welcome": "ברוכים הבאים ל-MedChain",
+    "welcome": "ברוכים הבאים ל-Iwosan",
     "verifyEmail": "אנא אמת את כתובת הדוא\"ל שלך",
     "resetPassword": "אפס את הסיסמה שלך",
     "accessGranted": "הוענקה לך גישה לרשומה רפואית",
@@ -138,7 +138,7 @@
     "accountDisabled": "החשבון שלך הושבת",
     "suspiciousActivity": "זוהתה פעילות חשודה בחשבונך",
     "confirmAction": "אנא אשר פעולה זו",
-    "notificationTitle": "הודעה מ-MedChain"
+    "notificationTitle": "הודעה מ-Iwosan"
   },
   "pagination": {
     "page": "עמוד",

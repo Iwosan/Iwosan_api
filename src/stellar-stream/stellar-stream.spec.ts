@@ -88,7 +88,7 @@ async function buildService(
       },
       { provide: EventEmitter2, useValue: emitter },
       {
-        provide: 'PROM_METRIC_MEDCHAIN_STELLAR_STREAM_EVENTS_PROCESSED_TOTAL',
+        provide: 'PROM_METRIC_IWOSAN_STELLAR_STREAM_EVENTS_PROCESSED_TOTAL',
         useValue: counter,
       },
     ],
@@ -307,7 +307,7 @@ describe('StellarStreamService', () => {
             },
           },
           { provide: EventEmitter2, useValue: emitter },
-          { provide: 'PROM_METRIC_MEDCHAIN_STELLAR_STREAM_EVENTS_PROCESSED_TOTAL', useValue: counter },
+          { provide: 'PROM_METRIC_IWOSAN_STELLAR_STREAM_EVENTS_PROCESSED_TOTAL', useValue: counter },
         ],
       }).compile();
 

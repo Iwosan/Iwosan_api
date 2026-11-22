@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Publishing @medchain/sdk to npm..."
+echo "Publishing @iwosan/sdk to npm..."
 
 cd "$(dirname "$0")/../packages/sdk"
 

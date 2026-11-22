@@ -18,7 +18,7 @@ interface JobDispatchResult {
 @Injectable()
 export class QueueService {
   private readonly logger = new Logger(QueueService.name);
-  private readonly tracer = trace.getTracer('healthy-stellar-backend');
+  private readonly tracer = trace.getTracer('iwosan-api');
 
   constructor(
     @InjectQueue(QUEUE_NAMES.STELLAR_TRANSACTIONS)
