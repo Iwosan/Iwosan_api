@@ -1,10 +1,12 @@
 import {
+  Body,
   Controller,
   Get,
   HttpCode,
   HttpStatus,
   Param,
   ParseUUIDPipe,
+  Patch,
   Post,
   Query,
   Req,
@@ -15,7 +17,7 @@ import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagg
 import { Request } from 'express';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { API_BEARER_AUTH_SCHEME } from '../common/constants/swagger.constants';
-import { ListOrdersQueryDto } from './dto/marketplace-order.dto';
+import { AssignBatchDto, ListOrdersQueryDto } from './dto/marketplace-order.dto';
 import { MarketplaceOrdersService } from './marketplace-orders.service';
 
 type AuthenticatedRequest = Request & {
@@ -43,6 +45,19 @@ export class MarketplaceOrdersController {
   @ApiResponse({ status: 403, description: 'Caller is not a party to the order' })
   dispute(@Param('id', ParseUUIDPipe) id: string, @Req() req: AuthenticatedRequest) {
     return this.ordersService.openDispute(id, this.userId(req));
+  }
+
+  @Patch(':id/batch')
+  @ApiOperation({ summary: 'Seller records the drug batch dispatched for a drug order' })
+  @ApiResponse({ status: 200, description: 'Batch recorded on the order' })
+  @ApiResponse({ status: 400, description: 'Not a drug order, or invalid batch id' })
+  @ApiResponse({ status: 403, description: 'Caller is not the seller' })
+  assignBatch(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: AssignBatchDto,
+    @Req() req: AuthenticatedRequest,
+  ) {
+    return this.ordersService.assignBatch(id, this.userId(req), dto.batchId);
   }
 
   private userId(req: AuthenticatedRequest): string {

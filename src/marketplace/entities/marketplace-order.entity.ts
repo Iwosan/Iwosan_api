@@ -84,6 +84,14 @@ export class MarketplaceOrder {
   @Column({ type: 'timestamptz', nullable: true })
   paidAt: Date | null;
 
+  /**
+   * `drug-batch-registry` batch the seller dispatched for a drug order (64 hex
+   * characters). Used to notify buyers when that batch is recalled.
+   */
+  @Index()
+  @Column({ type: 'varchar', length: 64, nullable: true })
+  batchId: string | null;
+
   @Column({ nullable: true })
   txHash: string;
 

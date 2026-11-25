@@ -6,7 +6,7 @@ import {
   MarketplaceOrderStatus,
   MarketplacePaymentStatus,
 } from './entities/marketplace-order.entity';
-import { MarketplaceListing } from './entities/marketplace-listing.entity';
+import { ListingKind, MarketplaceListing } from './entities/marketplace-listing.entity';
 import { MarketplaceOrdersService } from './marketplace-orders.service';
 import { User } from '../auth/entities/user.entity';
 
@@ -29,6 +29,7 @@ function makeOrder(overrides: Partial<MarketplaceOrder> = {}): MarketplaceOrder 
     disputedBy: null,
     paymentStatus: MarketplacePaymentStatus.UNPAID,
     paidAt: null,
+    batchId: null,
     txHash: null,
     ledger: null,
     createdAt: new Date(),
@@ -267,6 +268,45 @@ describe('MarketplaceOrdersService', () => {
       await service.markPaid('order-uuid');
 
       expect(orders.save).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('assignBatch', () => {
+    const BATCH = 'AB'.repeat(32);
+    const drugOrder = (kind = ListingKind.ORTHODOX_DRUG) =>
+      makeOrder({ listing: { kind } as MarketplaceListing });
+
+    it('lets the seller record the batch on a drug order', async () => {
+      orders.findOne.mockResolvedValueOnce(drugOrder());
+      mockUserAddress(SELLER);
+
+      const updated = await service.assignBatch('order-uuid', 'user-1', BATCH);
+
+      expect(updated.batchId).toBe(BATCH.toLowerCase());
+    });
+
+    it('rejects the buyer', async () => {
+      orders.findOne.mockResolvedValueOnce(drugOrder());
+      mockUserAddress(BUYER);
+
+      await expect(service.assignBatch('order-uuid', 'user-1', BATCH)).rejects.toBeInstanceOf(
+        ForbiddenException,
+      );
+    });
+
+    it('rejects non-drug orders', async () => {
+      orders.findOne.mockResolvedValueOnce(drugOrder(ListingKind.EQUIPMENT));
+      mockUserAddress(SELLER);
+
+      await expect(service.assignBatch('order-uuid', 'user-1', BATCH)).rejects.toBeInstanceOf(
+        BadRequestException,
+      );
+    });
+
+    it('returns 404 for an unknown order', async () => {
+      await expect(service.assignBatch('order-uuid', 'user-1', BATCH)).rejects.toBeInstanceOf(
+        NotFoundException,
+      );
     });
   });
 });

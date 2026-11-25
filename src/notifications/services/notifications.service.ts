@@ -307,6 +307,19 @@ export class NotificationsService {
             `${JSON.stringify(event.metadata ?? {})}`,
         );
         return;
+      case NotificationEventType.DRUG_RECALL:
+        // Safety alert: push to the buyer's devices regardless of preferences.
+        // Throwing lets the outbox retry and record undelivered alerts.
+        if (!this.pushNotificationService) {
+          throw new ServiceUnavailableException('Push notification delivery is not configured');
+        }
+        await this.pushNotificationService.sendToRegisteredDevices(patientId, {
+          title: 'Drug recall alert',
+          body:
+            `${event.metadata?.product ?? 'A drug you bought'} has been recalled. ` +
+            'Stop using it and contact the seller or your pharmacist.',
+        });
+        return;
       default:
         return;
     }

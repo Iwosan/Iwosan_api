@@ -14,7 +14,7 @@ import {
   MarketplaceOrderStatus,
   MarketplacePaymentStatus,
 } from './entities/marketplace-order.entity';
-import { MarketplaceListing } from './entities/marketplace-listing.entity';
+import { ListingKind, MarketplaceListing } from './entities/marketplace-listing.entity';
 import { OnChainMarketplaceOrder } from './marketplace-contract.reader';
 
 export type OrderRole = 'buyer' | 'seller';
@@ -156,6 +156,37 @@ export class MarketplaceOrdersService {
     order.disputedAt = new Date();
     order.disputedBy = address;
     return this.orders.save(order);
+  }
+
+  /**
+   * The seller records which `drug-batch-registry` batch a drug order was
+   * fulfilled from, so the buyer can be warned if that batch is recalled.
+   */
+  async assignBatch(orderId: string, userId: string, batchId: string): Promise<MarketplaceOrder> {
+    const order = await this.orders.findOne({
+      where: { id: orderId },
+      relations: { listing: true },
+    });
+    if (!order) {
+      throw new NotFoundException('Order not found');
+    }
+
+    const address = await this.stellarAddressFor(userId);
+    if (!address || address !== order.sellerAddress) {
+      throw new ForbiddenException('Only the seller can set the batch for this order');
+    }
+    const kind = order.listing?.kind;
+    if (kind !== ListingKind.ORTHODOX_DRUG && kind !== ListingKind.NATIVE_DRUG) {
+      throw new BadRequestException('Batches can only be set on drug orders');
+    }
+
+    order.batchId = batchId.toLowerCase();
+    return this.orders.save(order);
+  }
+
+  /** Orders fulfilled from a batch, for recall notifications. */
+  findByBatch(batchId: string): Promise<MarketplaceOrder[]> {
+    return this.orders.find({ where: { batchId: batchId.toLowerCase() } });
   }
 
   /** Called when a SEP-31 payment for this order completes. */
