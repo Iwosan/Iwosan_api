@@ -94,6 +94,7 @@ import { BedOccupancyModule } from './bed-occupancy/bed-occupancy.module';
 import { MedicalStaffModule } from './medical-staff/medical-staff.module';
 import { AppointmentsModule } from './appointments/appointments.module';
 import { MarketplaceModule } from './marketplace/marketplace.module';
+import { DrugBatchesModule } from './drug-batches/drug-batches.module';
 import { AnchorModule } from './payments/anchor/anchor.module';
 import { CrossBorderModule } from './payments/cross-border/cross-border.module';
 import { SurgicalModule } from './surgical-management-system/surgical/Surgical.module';
@@ -192,6 +193,7 @@ import { MigrationCliModule } from './Migration-CLI/migration-cli.module';
     EhrImportModule,
     AppointmentsModule,
     MarketplaceModule,
+    DrugBatchesModule,
     AnchorModule,
     CrossBorderModule,
     SurgicalModule,
