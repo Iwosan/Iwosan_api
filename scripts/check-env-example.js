@@ -29,6 +29,13 @@ const processEnvPatterns = [
 const configGetPattern = /\b(?:configService|config|this\.configService|this\.config)\s*\.\s*get(?:OrThrow)?(?:\s*<[^>]*>)?\s*\(\s*['"]([A-Z][A-Z0-9_]*)['"]/g;
 const validationSchemaPattern = /^\s{2}([A-Z][A-Z0-9_]*):\s*Joi\./gm;
 const platformEnvironmentKeys = new Set(['GITHUB_ACTOR', 'HOSTNAME', 'USER']);
+// Keys whose names are passed to a helper instead of `config.get('KEY')`, so
+// the patterns above cannot see them. Keep this list short and explicit.
+const indirectlyReadKeys = new Set([
+  // StellarSponsorshipService.keypairFor(keyId, envVar): key-store fallbacks.
+  'STELLAR_SPONSOR_SECRET',
+  'STELLAR_FEE_ACCOUNT_SECRET',
+]);
 
 for (const file of sourceFiles) {
   const source = fs.readFileSync(file, 'utf8');
@@ -40,6 +47,7 @@ for (const file of sourceFiles) {
   for (const match of source.matchAll(validationSchemaPattern)) sourceKeys.add(match[1]);
 }
 
+for (const key of indirectlyReadKeys) sourceKeys.add(key);
 for (const key of platformEnvironmentKeys) sourceKeys.delete(key);
 for (const key of sourceKeys) {
   // Configurations that expand these prefixes dynamically are documented as
