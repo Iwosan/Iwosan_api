@@ -5,12 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ScheduleModule } from '@nestjs/schedule';
 import { StellarController } from './controllers/stellar.controller';
+import { StellarSponsorshipController } from './controllers/stellar-sponsorship.controller';
 import { HealthCreditController } from './controllers/health-credit.controller';
 import { MultiSigController } from './controllers/multi-sig.controller';
 import { HealthCreditContractService } from './services/health-credit-contract.service';
 import { StellarFeeService } from './services/stellar-fee.service';
 import { StellarCacheService } from './services/stellar-cache.service';
 import { StellarService } from './services/stellar.service';
+import { StellarSponsorshipService } from './services/stellar-sponsorship.service';
 import { StellarWithBreakerService } from './services/stellar-with-breaker.service';
 import { StellarTransactionRetryService } from './services/stellar-transaction-retry.service';
 import { StellarTransactionQueueService } from './services/stellar-transaction-queue.service';
@@ -28,6 +30,7 @@ import { CircuitBreakerModule } from '../common/circuit-breaker/circuit-breaker.
 import { MetricsModule } from '../metrics/metrics.module';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { AuthModule } from '../auth/auth.module';
+import { KeyManagementModule } from '../key-management/key-management.module';
 
 @Module({
   imports: [
@@ -39,14 +42,21 @@ import { AuthModule } from '../auth/auth.module';
     EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
     NotificationsModule,
+    KeyManagementModule,
     HttpModule.register({ timeout: 10000, maxRedirects: 5 }),
   ],
-  controllers: [StellarController, MultiSigController, HealthCreditController],
+  controllers: [
+    StellarController,
+    StellarSponsorshipController,
+    MultiSigController,
+    HealthCreditController,
+  ],
   providers: [
     HealthCreditContractService,
     StellarFeeService,
     StellarCacheService,
     StellarService,
+    StellarSponsorshipService,
     StellarWithBreakerService,
     StellarTracingService,
     StellarTransactionRetryService,
@@ -64,6 +74,7 @@ import { AuthModule } from '../auth/auth.module';
     MultiSigTransactionService,
     StellarFeeService,
     StellarService,
+    StellarSponsorshipService,
     StellarWithBreakerService,
     StellarTracingService,
     StellarTransactionRetryService,
