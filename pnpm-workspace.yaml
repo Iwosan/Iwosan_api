@@ -1,9 +1,0 @@
-allowBuilds:
-  '@apollo/protobufjs': true
-  '@scarf/scarf': false
-  argon2: true
-  bcrypt: true
-  msgpackr-extract: true
-  protobufjs: true
-  sqlite3: true
-  unrs-resolver: true

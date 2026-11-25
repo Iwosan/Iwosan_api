@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    # Re-run when the migration-reviewed label is added or removed.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Install · env · migrations · debris
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The migration check compares this branch with main.
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Every config key is documented in .env.example
+        run: pnpm run check:env
+
+      - name: Migrations added or changed are safe
+        # A reviewed destructive migration can pass with the migration-reviewed label.
+        env:
+          REVIEWED: ${{ contains(github.event.pull_request.labels.*.name, 'migration-reviewed') }}
+        run: |
+          if ! node scripts/check-migration-safety.js --changed-since origin/main; then
+            if [ "$REVIEWED" = "true" ]; then
+              echo "Violations accepted: the pull request is labelled migration-reviewed."
+            else
+              exit 1
+            fi
+          fi
+
+      - name: No stray branch-name lines in src/
+        # Merge debris such as a lone "feat/some-branch" line has reached main
+        # several times (#914, #916, #917, #922, #929, #1021).
+        run: |
+          if grep -rnE '^\s*(feat|fix|chore|refactor|test|docs|style|perf|ci|build|revert|main|develop)(/[A-Za-z0-9._-]+)?\s*$' src/; then
+            echo "Stray branch-name token(s) found in src/. Remove the lines above."
+            exit 1
+          fi
+
+  secrets:
+    name: Secret scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan the new commits for secrets
+        # Uses the free gitleaks CLI image; the gitleaks GitHub Action needs a
+        # paid licence for organisation repositories. Only the commits in this
+        # pull request (or push) are scanned.
+        env:
+          RANGE: ${{ github.event_name == 'pull_request' && format('origin/{0}..HEAD', github.base_ref) || format('{0}..{1}', github.event.before, github.sha) }}
+        run: |
+          if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            RANGE="HEAD~1..HEAD"
+          fi
+          docker run --rm -v "$PWD:/repo" -w /repo zricethezav/gitleaks:v8.24.3 \
+            git --no-banner --redact --log-opts="$RANGE" .

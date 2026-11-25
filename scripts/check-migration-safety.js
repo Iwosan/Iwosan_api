@@ -15,14 +15,43 @@
  * Usage:
  *   node scripts/check-migration-safety.js
  *   node scripts/check-migration-safety.js --dir src/migrations
+ *   node scripts/check-migration-safety.js --changed-since origin/main
+ *
+ * With --changed-since, every migration is still read (earlier migrations
+ * decide whether a column was made nullable first), but only migrations added
+ * or modified since that git ref are reported. Migrations that already ran
+ * cannot be fixed, so they must not fail every later pull request.
  */
 
 const fs   = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const MIGRATIONS_DIR = process.argv.includes('--dir')
   ? process.argv[process.argv.indexOf('--dir') + 1]
   : path.join(__dirname, '../src/migrations');
+
+const CHANGED_SINCE = process.argv.includes('--changed-since')
+  ? process.argv[process.argv.indexOf('--changed-since') + 1]
+  : null;
+
+/** TypeORM migrations start with a timestamp; other files are helpers. */
+const MIGRATION_FILE_RE = /^\d{10,}.*\.(ts|js)$/;
+
+/** Migration filenames added or modified since `ref`. */
+function changedMigrations(ref, dir) {
+  const output = execFileSync(
+    'git',
+    ['diff', '--name-only', '--diff-filter=AM', `${ref}...HEAD`, '--', dir],
+    { encoding: 'utf8' },
+  );
+  return new Set(
+    output
+      .split('\n')
+      .map((line) => path.basename(line.trim()))
+      .filter(Boolean),
+  );
+}
 
 const DROP_COLUMN_RE = /DROP\s+COLUMN\s+(?:IF\s+EXISTS\s+)?["'`](\w+)["'`]/gi;
 const ADD_NULLABLE_RE = /ADD\s+COLUMN\s+(?:IF\s+NOT\s+EXISTS\s+)?["'`](\w+)["'`]\s+\w[\w\s(,)]*\bNULL\b/gi;
@@ -52,7 +81,7 @@ function loadMigrations(dir) {
 
   return fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith('.ts') || f.endsWith('.js'))
+    .filter((f) => MIGRATION_FILE_RE.test(f))
     .sort()
     .map((filename) => {
       const fullPath = path.join(dir, filename);
@@ -233,13 +262,27 @@ function main() {
     console.log(`  - ${row.file}: ${parts.join(', ')}`);
   });
 
-  if (violations.length === 0) {
+  let reported = violations;
+  if (CHANGED_SINCE) {
+    const changed = changedMigrations(CHANGED_SINCE, MIGRATIONS_DIR);
+    reported = violations.filter((v) => changed.has(v.file));
+    console.log(
+      `\nChecking ${changed.size} migration(s) changed since ${CHANGED_SINCE}` +
+        (changed.size ? `: ${[...changed].join(', ')}` : ''),
+    );
+    const ignored = violations.length - reported.length;
+    if (ignored > 0) {
+      console.log(`Ignoring ${ignored} violation(s) in migrations not changed by this branch.`);
+    }
+  }
+
+  if (reported.length === 0) {
     console.log('\n?  All migrations are safe. No policy violations found.\n');
     process.exit(0);
   }
 
-  console.error(`\n?  ${violations.length} violation(s) found:\n`);
-  for (const v of violations) {
+  console.error(`\n?  ${reported.length} violation(s) found:\n`);
+  for (const v of reported) {
     console.error(`  File:    ${v.file}`);
     console.error(`  Rule:    ${v.rule}`);
     if (v.column) console.error(`  Column:  ${v.column}`);

@@ -124,7 +124,7 @@ All scripts are run with `npm run <script>`. Prerequisites are noted for each.
 ### publish:sdk guidance
 
 `publish:sdk` pushes a public package to the npm registry.  
-**Only run from the release CI workflow** (`.github/workflows/security.yml`).  
+**Only run from the release CI workflow** (`.github/workflows/publish-sdk.yml`).  
 Requires the `NODE_AUTH_TOKEN` secret set to a scoped npm publish token.  
 Never run manually from a developer machine against production.
 

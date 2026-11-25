@@ -18,7 +18,8 @@ database changes such as:
 ## Trigger
 
 - A pull request targeting `main` fails the **Migration safety gate**
-  (`.github/workflows/migration-safety.yml`).
+  (`checks` job in `.github/workflows/ci.yml`). Only migrations added or
+  changed by the pull request are checked.
 - You are adding, editing, or reviewing a TypeORM migration under
   `src/migrations/`.
 - A release is blocked because the gate reports violations and no
@@ -138,7 +139,7 @@ violations.
 
 ## Related Configuration
 
-- CI workflow: `.github/workflows/migration-safety.yml`
+- CI workflow: `.github/workflows/ci.yml` (`checks` job)
 - PR label: `migration-reviewed`
 
 ## Related Code
