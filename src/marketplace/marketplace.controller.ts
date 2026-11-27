@@ -21,6 +21,8 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole } from '../auth/entities/user.entity';
 import { Public } from '../common/decorators/public.decorator';
 import { CreateListingDto, ListListingsQueryDto } from './dto/create-listing.dto';
+import { CreateReviewDto } from './dto/create-review.dto';
+import { MarketplaceReviewsService } from './marketplace-reviews.service';
 import { MarketplaceService } from './marketplace.service';
 import { PriceService } from './price.service';
 
@@ -29,6 +31,7 @@ import { PriceService } from './price.service';
 export class MarketplaceController {
   constructor(
     private readonly marketplaceService: MarketplaceService,
+    private readonly reviewsService: MarketplaceReviewsService,
     private readonly priceService: PriceService,
   ) {}
 
@@ -52,6 +55,13 @@ export class MarketplaceController {
   @UseGuards(JwtAuthGuard)
   create(@Body() dto: CreateListingDto, @Req() req: any) {
     return this.marketplaceService.create(this.userId(req), dto);
+  }
+
+  /** Only buyers with a released order for this listing may review it. */
+  @Post(':id/reviews')
+  @UseGuards(JwtAuthGuard)
+  review(@Param('id', ParseUUIDPipe) id: string, @Body() dto: CreateReviewDto, @Req() req: any) {
+    return this.reviewsService.create(id, this.userId(req), dto);
   }
 
   @Patch(':id/verify')

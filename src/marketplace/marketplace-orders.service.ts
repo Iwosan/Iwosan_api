@@ -207,7 +207,7 @@ export class MarketplaceOrdersService {
   }
 
   /** Stellar keys are excluded by default, so load the column explicitly. */
-  private async stellarAddressFor(userId: string): Promise<string | null> {
+  async stellarAddressFor(userId: string): Promise<string | null> {
     const user = await this.users
       .createQueryBuilder('user')
       .addSelect('user.stellarPublicKey')
