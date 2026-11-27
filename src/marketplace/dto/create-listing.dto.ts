@@ -1,5 +1,7 @@
+import { Transform } from 'class-transformer';
 import {
   IsEnum,
+  IsIn,
   IsInt,
   IsNotEmpty,
   IsNumberString,
@@ -64,4 +66,13 @@ export class ListListingsQueryDto {
   @IsOptional()
   @IsString()
   search?: string;
+
+  /**
+   * Display the prices in this currency (NGN, USDC or XLM) using the Reflector
+   * oracle. Without it the stored `unitPrice` and `currency` are returned.
+   */
+  @IsOptional()
+  @Transform(({ value }) => (typeof value === 'string' ? value.toUpperCase() : value))
+  @IsIn(['NGN', 'USDC', 'XLM'])
+  currency?: string;
 }

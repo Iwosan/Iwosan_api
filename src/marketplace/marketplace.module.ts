@@ -11,6 +11,8 @@ import { MarketplaceQuotesController } from './marketplace-quotes.controller';
 import { MarketplaceQuotesService } from './marketplace-quotes.service';
 import { MarketplaceController } from './marketplace.controller';
 import { MarketplaceService } from './marketplace.service';
+import { PriceService } from './price.service';
+import { ReflectorOracleClient } from './reflector-oracle.client';
 
 @Module({
   imports: [
@@ -23,12 +25,15 @@ import { MarketplaceService } from './marketplace.service';
     MarketplaceQuotesService,
     MarketplaceOrdersService,
     MarketplaceContractReader,
+    PriceService,
+    ReflectorOracleClient,
   ],
   exports: [
     MarketplaceService,
     MarketplaceQuotesService,
     MarketplaceOrdersService,
     MarketplaceContractReader,
+    PriceService,
   ],
 })
 export class MarketplaceModule {}
