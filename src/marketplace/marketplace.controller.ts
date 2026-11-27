@@ -22,16 +22,24 @@ import { UserRole } from '../auth/entities/user.entity';
 import { Public } from '../common/decorators/public.decorator';
 import { CreateListingDto, ListListingsQueryDto } from './dto/create-listing.dto';
 import { MarketplaceService } from './marketplace.service';
+import { PriceService } from './price.service';
 
 @ApiTags('marketplace')
 @Controller('marketplace/listings')
 export class MarketplaceController {
-  constructor(private readonly marketplaceService: MarketplaceService) {}
+  constructor(
+    private readonly marketplaceService: MarketplaceService,
+    private readonly priceService: PriceService,
+  ) {}
 
   @Public()
   @Get()
-  findAll(@Query() query: ListListingsQueryDto) {
-    return this.marketplaceService.findAll(query);
+  async findAll(@Query() query: ListListingsQueryDto) {
+    const listings = await this.marketplaceService.findAll(query);
+    if (!query.currency) {
+      return listings;
+    }
+    return this.priceService.addDisplayPrices(listings, query.currency);
   }
 
   @Public()
