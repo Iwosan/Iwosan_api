@@ -8,12 +8,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ILike, Repository } from 'typeorm';
 import { CreateListingDto, ListListingsQueryDto } from './dto/create-listing.dto';
 import { ListingKind, MarketplaceListing, TradeMode } from './entities/marketplace-listing.entity';
+import { ListingRating, MarketplaceReviewsService } from './marketplace-reviews.service';
+
+export type MarketplaceListingResponse = MarketplaceListing & ListingRating;
 
 @Injectable()
 export class MarketplaceService {
   constructor(
     @InjectRepository(MarketplaceListing)
     private readonly listings: Repository<MarketplaceListing>,
+    private readonly reviewsService: MarketplaceReviewsService,
   ) {}
 
   async create(sellerId: string, dto: CreateListingDto): Promise<MarketplaceListing> {
@@ -38,9 +42,9 @@ export class MarketplaceService {
     return this.listings.save(listing);
   }
 
-  /** Public catalogue: only active, verified listings. */
-  findAll(query: ListListingsQueryDto): Promise<MarketplaceListing[]> {
-    return this.listings.find({
+  /** Public catalogue: only active, verified listings, with their ratings. */
+  async findAll(query: ListListingsQueryDto): Promise<MarketplaceListingResponse[]> {
+    const listings = await this.listings.find({
       where: {
         active: true,
         verified: true,
@@ -51,14 +55,17 @@ export class MarketplaceService {
       order: { createdAt: 'DESC' },
       take: 100,
     });
+    const ratings = await this.reviewsService.ratingsFor(listings.map((listing) => listing.id));
+    return listings.map((listing) => this.withRating(listing, ratings));
   }
 
-  async findOne(id: string): Promise<MarketplaceListing> {
+  async findOne(id: string): Promise<MarketplaceListingResponse> {
     const listing = await this.listings.findOne({ where: { id } });
     if (!listing) {
       throw new NotFoundException('Listing not found');
     }
-    return listing;
+    const ratings = await this.reviewsService.ratingsFor([listing.id]);
+    return this.withRating(listing, ratings);
   }
 
   async verify(id: string): Promise<MarketplaceListing> {
@@ -74,5 +81,16 @@ export class MarketplaceService {
     }
     listing.active = false;
     await this.listings.save(listing);
+  }
+
+  private withRating(
+    listing: MarketplaceListing,
+    ratings: Map<string, ListingRating>,
+  ): MarketplaceListingResponse {
+    return {
+      ...listing,
+      averageRating: ratings.get(listing.id)?.averageRating ?? 0,
+      reviewCount: ratings.get(listing.id)?.reviewCount ?? 0,
+    };
   }
 }
